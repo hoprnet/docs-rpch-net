@@ -64,6 +64,16 @@ const config = {
     ],
   ],
 
+  scripts: [
+    {
+      src: 'https://cdn.usefathom.com/script.js',
+      'data-site': 'YKGELYNY',
+      defer: true,
+      'data-included-domains': 'docs.rpch.net',
+   //   async: true,
+    },
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

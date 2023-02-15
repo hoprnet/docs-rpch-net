@@ -29,7 +29,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.main-wrapper:not(.docsWrapper_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module) {
+.main-wrapper:not(.docsWrapper_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module, .docsWrapper_BCFX) {
   background-image: url("/img/RPCh_wallets_hero_gradient_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
