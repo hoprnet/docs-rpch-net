@@ -78,7 +78,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'tutorial-basics/What-is-RPCh',
             position: 'left',
             label: 'Current version',
           },
