@@ -38,4 +38,4 @@ Upon the release of RPCh Beta, users can register their node through an API whic
 
 All information regarding this will be updated in the documentation here. (link)
 
-Note: To run an RPCh node, you will first need to run a HOPR node. You can learn how to set up your own HOPR node [here.] (link) 
+Note: To run an RPCh node, you will first need to run a HOPR node. You can learn how to set up your own HOPR node here. (link) 

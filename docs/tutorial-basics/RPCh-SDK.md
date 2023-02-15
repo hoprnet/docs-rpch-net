@@ -18,7 +18,7 @@ The RPCh SDK also communicates with the discovery platform to select reliable en
 
 Currently, with RPCh Alpha, only nodes controlled by the HOPR association will function as entry/exit nodes. This creates a greater trust assumption for users who have to trust the HOPR association not to perform timing attacks and analysis to collect data from users of RPCh. 
 
-But this will not be the case with RPCh Beta, where entry and exit nodes will be selected from all node runners registered on the discovery platform. With this new feature within RPCh Beta, the SDK will also be responsible for updating a reliability metric associated with each node so that only reliable and trustworthy nodes will be selected to serve as entry/exit nodes. This will be achieved through the implementation of [Kevlar.](link)
+But this will not be the case with RPCh Beta, where entry and exit nodes will be selected from all node runners registered on the discovery platform. With this new feature within RPCh Beta, the SDK will also be responsible for updating a reliability metric associated with each node so that only reliable and trustworthy nodes will be selected to serve as entry/exit nodes. This will be achieved through the implementation of Kevlar.(link)
 
 ## Kevlar
 
