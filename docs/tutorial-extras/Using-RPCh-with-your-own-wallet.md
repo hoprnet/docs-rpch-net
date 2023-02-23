@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # Using Any Wallet
 
-By following the instructions in this tutorial, you can run RPCh locally using a Docker connector. This will give you an RPC endpoint you can use as a drop-in replacement on any wallet that lets you customise your RPC, which is most wallets. This also means you can use RPCh on any chain within your wallet, just make sure to choose the correct chain ID when adding it as a network. The example below uses Gnosis chain.
+This tutorial gives an overview of how to run RPCh locally using a Docker connector. This setup allows you to add RPCh as a drop-in replacement to any wallet you use across any chain. Make sure to adjust the chain ID to match your chain, as the example below uses Gnosis.
 
-Alternatively, just download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration. You can find a guide on how to download BlockWallet [here.](./Running-RPCh-on-block-wallet.md)
+Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](./Running-RPCh-on-block-wallet.md)
 ## Running RPCh with the Docker connector
 
 **Note:** Make sure you have Docker installed on your device
