@@ -4,26 +4,46 @@ sidebar_position: 1
 
 # What is RPCh?
 
-## The issue with today’s crypto wallets
+## The Problem
 
-Crypto wallets leak a massive amount of data about their users to RPC providers. As wallets connect to RPC providers to resolve RPC requests, and RPC providers or blockchain node runners can view these requests/responses, exposing the user's identity and online activity. 
+Crypto wallets today leak unreasonable amounts of data about their users. Not maliciously or on purpose, but just inherently with how they currently function. Every wallet needs to be able to communicate with nodes on-chain to perform its functionality, such as displaying your balance or sending transactions.
 
-This is the same type of centralised setup that has allowed the current internet to be plagued by data harvesting from closed-source, blackbox softwares that exploit our data for profit.
+And, to communicate with a node, your wallet uses remote procedure calls (RPC) to request these tasks or bits of information from a node. This request-response logic is common in any computer-based task and is nothing new, but the problem starts when you take a closer look at what each request your wallet makes on your behalf is revealing about you.
 
-**[ INSERT SETUP GRAPHIC ]**
+### The Data Leak
 
-Your identity being exposed and linked to your on-chain activity makes your data exploitable for these large, centralized providers and makes your assets more vulnerable to attack vectors such as advanced MEVs.
+Each request leaks your IP address, device information, and a payload exposing your every interaction with a web3 service. From transactions you considered to just products and services you're browsing. And your wallet is constantly making these requests as you interact with these services, painting a complete picture of how you spend your time and where. 
 
-## What is RPCh?
+A great tool that highlights this is [DERP,](https://derp.hoprnet.org/) which provides you with an RPC endpoint you add to your wallet to make these requests visible on your browser while you're connected to DERP.
 
-RPCh provides a metadata-preserving RPC service that utilizes the HOPR privacy mixnet to obscure the identity of the user when communicating with the blockchain.
+**[Insert Image]**
 
-Your requests are segmented into smaller packets, each of which is sent to an RPCh entry node, where each packet is layered with encryption before being re-routed, mixed and decrypted across multiple intermediary nodes on the HOPR mixnet. 
+### Who has access to this information? 
 
-When the packets reach the exit node, they are re-joined into a request which is sent to nodes on-chain. The response is then again segmented and shot back across the HOPR mixnet to the entry node, which passes it on to your wallet.
+Whichever node processes the request will obviously be able to see it, and if every wallet had their own dedicated infrastructure to process these requests, it would be bad enough that they can now collect as much information as they want about their users.
 
-With layered encryption and constant packet mixing, the source and destination of your request/response are completely obscured to all observers, including us, your wallet and all nodes on the relay. 
+But it's actually much worse. Most services can't build and maintain that level of infrastructure while scaling, or for many, even while stagnant. So they offload this task to RPC providers like Infura or Alchemy, that now give the wallets an endpoint they can send the requests to, after which they handle the rest.
 
-**[ INSERT EXPLAINER GRAPHIC ]**
+We're talking about the few titans of industry that process billions of calls daily, and have unlimited access to everything practically any crypto user does on web3. A problem that's even worse than the privacy nightmare of web 2.0.
 
-You can learn more about how the HOPR mixnet achieves this [here.](link to hopr docs) And to get a better overview of RPCh’s architecture, you can read more [here.](link to architecture overview)
+### Why is it so hard to resolve?
+
+A lot of these issues stem from how the internet always was and still is. For two devices to communicate, or for you to interact with a website, it needs to know where to send data to and vice versa. This point-to-point data exchange is fundamental to the internet, and the data it requires is why privacy issues have never been resolved in web 2.0, regardless of how many new encryption technologies enter the market. 
+
+The fundamental issue is with the data exposed on the transport layer as it moves from point to point. The sender and receiver's time, location and identity are constantly exposed. It doesn't matter if I can't see what item you bought at a shopping mall if I can see what stores you visited, what products you browsed and which shop you were in when you made the purchase. With this alone, I could make a pretty good guess, but if I was a machine trained to analyze this information and also observed every other facet of your life in a similar manner, the accuracy of my guess would be terrifying. 
+
+And that's the state of the current internet, but with web3, not only did we import these issues, we made them worse.
+
+## The solution
+
+RPCh utilizes the HOPR mixnet to route, encrypt and completely obscure all user data from wallets making requests to the chain. It is a privacy-preserving RPC service that detaches the sender's identity from all communications with the blockchain.
+
+### HOPR mixnet
+
+A solution to this needs transport-layer privacy, which is exactly what RPCh provides. It is the first commercial service developed on the HOPR privacy mixnet. Mixnets are the most academically sound transport layer privacy mechanism. They are a concept that predates the internet but has only been attempted in industrial development a handful of times, mainly in the last decade with the rise of web3.
+
+HOPR is not only the first to market with a fully functioning privacy mixnet that is now hosting a commercial service, but it is also the only fully incentivized and decentralized privacy mixnet allowing it to scale and sustain an ecosystem. You can read more about HOPR [here.](https://docs.hoprnet.org/core/mixnets)
+
+### RPCh Design
+
+RPCh utilizes the HOPR mixnet, but several key components are necessary to provide the complete RPC service. An overview of the Architecture can be found [here.](./Architecture-overview.md)
