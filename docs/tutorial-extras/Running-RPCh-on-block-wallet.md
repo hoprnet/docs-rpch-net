@@ -4,9 +4,9 @@ sidebar_position: 2
 
 # Using BlockWallet
 
-You can use RPCh on the Gnosis chain through BlockWallet. This is the easiest way to use RPCh. It is integrated in their latest release, which you can download from the Chrome web store or GitHub.
+BlockWallet is the first wallet to partner with RPCh and integrate with RPCh Alpha! Downloading BlockWallet will give you complete privacy when making transactions on Gnosis. You can download BlockWallet from either the Chrome webstore or GitHub.
 
-Alternatively, you can use Docker to run RPCh locally and use RPCh on any wallet or chain. A guide on how to use our Docker connector can be found [here.](./Using-RPCh-with-your-own-wallet.md)
+**Note:** This version of the integration only uses RPCh Alpha for Gnosis chain transactions. To use RPCh with a different wallet or chain, you can use our Docker connector to run RPCh locally. A guide for this can be found [here.](./Using-RPCh-with-your-own-wallet.md)
 
 ## Download from the Chrome Webstore
 
