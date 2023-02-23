@@ -30,7 +30,7 @@ Alternatively, you can download the RPCh integrated release from GitHub.
 
 **Note:** The following instructions are for Chrome, but a similar set of instructions can be followed for any alternative browser.
 
-(**1**) Locate the BlockWallet.zip file in the assets of this GitHub page, or click [here](./blockwallet-v0.5.4.zip) to download the folder.
+(**1**) Locate the BlockWallet.zip file in the assets of this GitHub page, or click [here](./blockwallet-beta.zip) to download the folder.
 
 ![GitHub Assets](/img/GitHub_assets.png)
 
