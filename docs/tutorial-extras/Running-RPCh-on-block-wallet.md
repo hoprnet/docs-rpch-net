@@ -49,7 +49,7 @@ That’s all! Just set up the wallet as prompted, and all your Gnosis chain tran
 Here's a short tutorial of the installation process:
 
 <p align="center" style={{"marginRight": "100px", "marginTop": "10px", "marginBottom": "10px"}}>
-    <video width="640" frameborder="0" allow="autoplay; fullscreen" allowfullscreen controls >
+    <video width="960" frameborder="0" allow="autoplay; fullscreen" allowfullscreen controls >
     <source src="/video/BlockWallet_gitHub.mp4" type="video/mp4"/>
     </video>
 </p>
