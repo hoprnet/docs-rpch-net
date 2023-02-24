@@ -4,22 +4,32 @@ sidebar_position: 3
 
 # RPCh SDK
 
-The RPCh SDK is needed as the HOPR protocol is a different transport mechanism than the HTTP(S) that requests/responses are sent as. So they need to be translated into something understandable by the HOPR network. 
+## Overview
 
-This is done by segmenting the original request into smaller, encrypted segments that fit the maximum payload restriction of the network and converting the necessary information into a single string separated by breakers that can be removed in the reconstruction of the request.
+The SDK is a necessary component which serves two main functions:
 
-[ INSERT REQUEST SIDE OF THE GRAPHIC ]
+- Translating HTTP(S) requests/responses into something the HOPR network can understand.
+- Communicating with the discovery platform to choose reliable RPCh entry & exit nodes for each relay
 
-The SDK serves a similar function in reconstructing and decrypting responses sent back through for a given request. 
+### Translating Your Request
 
-## Finding Entry/Exit Nodes
+The HOPR protocol is a different transport mechanism than the HTTP(S) that requests/responses are sent as. So to send them over the HOPR mixnet, they need to be reformatted. This includes:
 
-The RPCh SDK also communicates with the discovery platform to select reliable entry/exit nodes and keeps track of open relays to track whether or not a response was received. 
+- Encryption to hide the request from the entry node
+- Segmentation to fit the maximum payload limit of 500 bytes that all packets on the HOPR mixnet are limited to
+- Converting the segmented requests/responses into single string messages using breakers to replace syntax
+- Adding a numerical ID to each segmented packet so the message can later be reconstructed into its original format
 
-Currently, with RPCh Alpha, only nodes controlled by the HOPR association will function as entry/exit nodes. This creates a greater trust assumption for users who have to trust the HOPR association not to perform timing attacks and analysis to collect data from users of RPCh. 
+For responses that the SDK receives, it performs a similar function in reverse, reconstructing the message by replacing the breakers with their original syntax, joining the segments into a single message and decrypting it using a corresponding private key only exposed to it upon the formation of the initial request’s relay.
 
-But this will not be the case with RPCh Beta, where entry and exit nodes will be selected from all node runners registered on the discovery platform. With this new feature within RPCh Beta, the SDK will also be responsible for updating a reliability metric associated with each node so that only reliable and trustworthy nodes will be selected to serve as entry/exit nodes. This will be achieved through the implementation of Kevlar.(link)
+![SDK graphic](/img/SDK_graphic.png)
 
-## Kevlar
+### Interacting with the discovery platform
 
-Kevlar verifies the integrity of an RPC response by attempting to sync to the latest beacon chain header. Kevlar will request block headers from a given list of provers, and then every RPC request made by the SDK will go through Kevlar, which will generate several more requests to verify the integrity of the following RPC response.
+The SDK also has to interact with the discovery platform to choose suitable entry & exit nodes for each individual request. This interaction is mainly limited to asking the discovery platform for nodes with a high-reliability score and, at the end of the relay, updating the reliability score of each node used.
+
+Currently, with RPCh Alpha, no reliability score is maintained. This will be introduced in RPCh Beta along with the introduction of Kevlar.
+
+### Kevlar
+
+Kevlar adds light client verification, verifying the integrity of responses sent back from the RPC provider. It requests block headers from a given list of provers and generates several requests for every response that passes through Kevlar. It will then attempt to sync to the latest beacon chain block header to verify the integrity of the following RPC response.

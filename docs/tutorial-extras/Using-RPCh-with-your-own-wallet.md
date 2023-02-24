@@ -41,7 +41,7 @@ Here is an example of adding this to MetaMask for the Gnosis chain with chain ID
 
 Here is a demo video of the installation process. For this, I’m using a VPS to run the commands.
 
-**[Insert video]**
+**[Insert Video]**
 
 **Note:** With this setup, you can RPCh on any wallet and on any chain. Just choose the correct corresponding chain ID and use the same RPC URL.
 

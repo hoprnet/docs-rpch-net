@@ -31,11 +31,11 @@ On top of this RPCh adds a layer of encryption to the message which is only decr
 - **HOPR mixnet:** Obscures the source and destination of the data being transmitted.
 - **Kevlar:** Verifies the integrity of RPC responses returned to the wallet.
 
-In a very simple sense, we are just allowing the client to connect to the RPCh network, where they communicate with an entry node that will translate, encrypt and route the request across the HOPR mixnet to an exit node that will communicate the response to the provider. The exit node will then receive the response and send it back to the entry node in a similar fashion. Finally, the entry node will send it back to the client with one layer of verification added through Kevlar to maintain the integrity of the response.
+In a very simple sense, we are just allowing the client to connect to the RPCh network, where they communicate with an entry node that will translate, encrypt and route the request across the HOPR mixnet to an exit node that will communicate the request to the provider. The exit node will then receive the response and send it back to the entry node in a similar fashion. Finally, the entry node will send it back to the client with one layer of verification added through Kevlar to maintain the integrity of the response.
 
 ## Detailed Architecture 
 
-But to make this service work, a few considerations have to be made in translating the normal HTTP(S) request/responses to something the HOPR network can understand. This translation involves segmenting the request/responses into smaller encrypted messages and adding routing information so that the selected entry/exit nodes can relay to each other.
+But to make this service work, a few considerations have to be made in translating the normal HTTP(S) request/responses to something the HOPR network can understand. This translation involves segmenting the request/responses into smaller encrypted messages and adding routing information so that the selected entry/exit nodes can relay request/responses to each other.
 
 On top of this, considerations also need to be made for the following:
 
@@ -45,7 +45,7 @@ On top of this, considerations also need to be made for the following:
 
 With this, you end up with an architecture similar to the following:
 
-**[INSERT DETAILED FLOW CHART]**
+![Detailed Flowchart](/img/rpch-general_diagram.png)
 
 Responses/requests are cached and stored to keep track of open relays until a relay is completed and a response is received. A discovery platform is added to select reliable entry/exit nodes, and a funding service is used to pay these nodes for their service. 
 
