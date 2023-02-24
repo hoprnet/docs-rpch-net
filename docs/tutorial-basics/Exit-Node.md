@@ -23,7 +23,7 @@ The exit node does the following:
 - Once all the segments have arrived, it reconstructs the encrypted message by manipulating the necessary syntax.
 - The encrypted message is then decrypted using the private key, which is exposed only to the exit node. 
 - It then performs an external request to the given provider URL and receives the response.
-- The response is then encrypted, segmented, and returned to the entry node in the same format.
+- The response is finally encrypted, segmented, and returned to the entry node in the same format.
 
 ## Ecosystem
 
