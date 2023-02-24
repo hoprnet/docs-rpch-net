@@ -8,9 +8,9 @@ sidebar_position: 5
 
 The RPCh exit node communicates with the RPC provider and returns the response to the client. It must:
 
-Translate the request and response between HTTP(S) and HOPR
-Communicate with the RPC provider 
-Add an extra layer of encryption to obscure the response from the entry node
+- Translate the request and response between HTTP(S) and HOPR
+- Communicate with the RPC provider 
+- Add an extra layer of encryption to obscure the response from the entry node
 
 ### Design
 
