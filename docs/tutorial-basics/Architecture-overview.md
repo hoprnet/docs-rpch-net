@@ -13,7 +13,7 @@ RPCh takes your wallet's request to an RPC provider and instead sends it to an R
 - The base functionality of the HOPR mixnet
 - An extra layer of encryption added by the SDK 
 
-**[Insert Graphic]**
+<!-- **[Insert Graphic]** -->
 
 ### Privacy Component
 

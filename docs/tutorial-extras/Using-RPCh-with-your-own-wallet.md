@@ -41,7 +41,11 @@ Here is an example of adding this to MetaMask for the Gnosis chain with chain ID
 
 Here is a demo video of the installation process. For this, I’m using a VPS to run the commands.
 
-**[Insert Video]**
+<p align="center" style={{"marginRight": "100px", "marginTop": "10px", "marginBottom": "10px"}}>
+    <video width="640" frameborder="0" allow="autoplay; fullscreen" allowfullscreen controls >
+    <source src="/video/Docker_Connector_Demo.mp4" type="video/mp4"/>
+    </video>
+</p>
 
 **Note:** With this setup, you can RPCh on any wallet and on any chain. Just choose the correct corresponding chain ID and use the same RPC URL.
 

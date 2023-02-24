@@ -16,7 +16,7 @@ Each request leaks your IP address, device information, and a payload exposing y
 
 A great tool that highlights this is [DERP,](https://derp.hoprnet.org/) which provides you with an RPC endpoint you add to your wallet to make these requests visible on your browser while you're connected to DERP.
 
-**[Insert Image]**
+![DERP](/img/DERP.png)
 
 ### Who has access to this information? 
 

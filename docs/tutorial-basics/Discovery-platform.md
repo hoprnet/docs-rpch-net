@@ -18,7 +18,7 @@ As such, the discovery platform has three main functionalities:
 
 To perform these functionalities, the discovery platform interacts with the RPCh SDK and funding service.
 
-**[Insert graphic]**
+![Discovery Platform](/img/Discovery_platform2.png)
 
 **Note:** Currently, with RPCh Alpha, a reliability score is not maintained this feature will be introduced in Beta.  
 
