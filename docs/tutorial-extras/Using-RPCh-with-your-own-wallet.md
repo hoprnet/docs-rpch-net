@@ -13,7 +13,7 @@ Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosi
 
 ## Running RPCh with the Docker connector
 
-### How to Install Docker
+### Install Docker
 
 Make sure you have Docker installed on your device before trying to run RPCh with the Docker Connector.
 
@@ -108,3 +108,11 @@ Once you have added the new Network to your wallet you can test that it is actua
 Check your terminal logs to make sure the server is still running fine.
 
 ![Logs](/img/Logs.png)
+
+### Configuring logs
+
+You can configure your logs to reduce spam by editing the docker command you are running. After the `Debug` tag you can list paths you do not want to see, e.g. add `-rpch:somepath`. By default the original commad provided to you does not show logs for RPCh metrics. Note: `DEBUG="rpch*, -*metrics"`, this asks it to print all RPCh logs except the metrics.
+
+```
+docker run -e DEBUG="rpch*,-*metrics" -e RESPONSE_TIMEOUT=10000 -e DISCOVERY_PLATFORM_API_ENDPOINT=https://staging.discovery.rpch.tech -e PORT=8080 -e DATA_DIR=app -e CLIENT=shoulder-chapter-stems-broke-particular  --name rpc-server -p 8080:8080 --rm  europe-west6-docker.pkg.dev/rpch-375921/rpch/rpc-server:f8a6bf7
+```
