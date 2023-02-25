@@ -10,11 +10,11 @@ BlockWallet is the first wallet to partner with RPCh and integrate with RPCh Alp
 
 ## Download from the Chrome Webstore
 
-(**1**) Find the latest BlockWallet release on the Webstore or just click [here.](https://chrome.google.com/webstore/detail/blockwallet/bopcbmipnjdcdfflfgjdgdjejmgpoaab)
+(**1**) Find the latest BlockWallet release on the Webstore or just click [here.](https://chrome.google.com/webstore/detail/blockwallet-rpch-experime/fhjkaoanopnkfmlahebnoeghlacnimpj)
 
 (**2**) Simply add the extension to your browser
 
-![Chrome store Extension](/img/BlockWallet_chrome_extension2.png)
+![Chrome store Extension](/img/BlockWallet_chrome_extension4.png)
 
 (**3**) And set up the wallet as prompted
 
