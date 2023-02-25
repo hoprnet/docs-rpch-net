@@ -38,7 +38,7 @@ Switching Networks:
 **Solution:** Switch networks from `Gnosis on RPCh` to another network such as `Ethereum Mainnet`. And then switch networks back to `Gnosis on RPCh`.
 
 <p align="center">
-  <img src="img/Network_provider_down.gif" alt="Gas Estimation"/>
+  <img src="/img/Network_provider_down.gif" alt="Gas Estimation"/>
 </p>
 
 ### Transaction Stuck Processing
