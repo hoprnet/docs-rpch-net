@@ -6,13 +6,13 @@ sidebar_position: 4
 
 ## Overview
 
-The discovery platform is a tool to register HOPR nodes interested in functioning as RPCh entry/exit nodes. Entry and exit nodes have to be reliable, especially exit nodes that have to perform added functionality beyond that of a HOPR node in relaying data or generating paths. 
+The discovery platform is a tool to register HOPR nodes interested in functioning as entry/exit nodes for RPCh. Entry and exit nodes have to be reliable, especially exit nodes that have to perform added functionality beyond that of a HOPR node in relaying data or generating paths. 
 
 As part of the RPCh ecosystem, these nodes are also incentivised to run entry/exit nodes to a high standard and given funds to pay for relays they initiate.
 
 As such, the discovery platform has three main functionalities:
 
-- Allowing node runners to register their HOPR node as a potential RPCh entry/exit node
+- Allowing node runners to register their HOPR node as a potential entry/exit node for RPCh relays
 - Maintaining a reliability score for each registered node
 - Funding nodes that serve as entry/exit nodes
 

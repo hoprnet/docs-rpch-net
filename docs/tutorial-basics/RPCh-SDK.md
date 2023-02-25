@@ -9,7 +9,7 @@ sidebar_position: 3
 The SDK is a necessary component which serves two main functions:
 
 - Translating HTTP(S) requests/responses into something the HOPR network can understand.
-- Communicating with the discovery platform to choose reliable RPCh entry & exit nodes for each relay
+- Communicating with the discovery platform to choose reliable entry & exit nodes for each relay
 
 ### Translating Your Request
 

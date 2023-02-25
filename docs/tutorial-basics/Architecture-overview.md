@@ -8,10 +8,10 @@ sidebar_position: 2
 
 ### Concept
 
-RPCh takes your wallet's request to an RPC provider and instead sends it to an RPCh entry node on the HOPR mixnet. This node then relays it to an RPCh exit node on the HOPR mixnet, which communicates with your provider on behalf of your wallet. The exit node receives the response and routes it back to the client through the entry node. This way, the provider can't link the client's request or response to the client's wallet, and neither can the entry and exit nodes due to:
+RPCh takes your wallet's request to an RPC provider and instead sends it to an entry node on the HOPR mixnet. This node then relays it to an RPCh exit node also on the HOPR mixnet, which communicates with your provider on behalf of your wallet. The exit node receives the response and routes it back to the client through the entry node. This way, the provider can't link the client's request or response to the client's wallet, and neither can the entry and exit nodes due to:
 
 - The base functionality of the HOPR mixnet
-- An extra layer of encryption added by the SDK 
+- An extra layer of encryption added by the SDK / Exit Node 
 
 <!-- **[Insert Graphic]** -->
 
