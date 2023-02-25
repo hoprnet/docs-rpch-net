@@ -56,15 +56,16 @@ Depending on your distribution, please follow the official guidelines to install
 
 (**3**) That's all! Now you have RPCh running, You can use it on any wallet by adding the local URL from the pop-up to your wallet as the RPC URL for a new network. 
 
-**Note:** If you are using a VPS to run RPCh, replace `localhost` with your VPS IP address, for example: `http://142.93.5.175:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net` would be my RPC URL if my VPS had the IP address: `142.93.5.175`.
-
 ![RPC URL](/img/RPC_URL.png)
 
-This endpoint is the same for everyone, so you can copy it from here:
+**Note:** If you are using a VPS to run RPCh, replace `localhost` with your VPS IP address, for example: `http://142.93.5.175:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net` would be my RPC URL if my VPS had the IP address: `142.93.5.175`.
+
+This original endpoint is the same for everyone, so you can copy it from here:
 
 ```
 http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net
 ```
+### Example Use
 
 Here is an example of adding this to MetaMask for the `Gnosis chain` with chain ID: `100`. If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1`.
 
