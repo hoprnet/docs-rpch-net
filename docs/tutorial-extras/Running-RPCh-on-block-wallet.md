@@ -53,3 +53,17 @@ Here's a short tutorial of the installation process:
     <source src="/video/BlockWallet_gitHub.mp4" type="video/mp4"/>
     </video>
 </p>
+
+## Test that it works
+
+Once you have added the new Network to your wallet you can test that it is actually working by inspecting your browser wallet. The instructions below show how to do this for Chrome.
+
+(**1**) Go to your browser's extensions page. For chrome you can type the following URL into your search bar: `chrome://extensions/`
+
+(**2**) Locate the hyperlinked text: `service worker`/`background page` at the bottom of your wallet extension. 
+
+![Inspect](/img/Extensions_chrome_inspect.png)
+
+(**3**) With the newly exposed console window open, connect to an exchange such as [SushiSwap](https://www.sushi.com/swap) and see exactly what your wallet is doing, including its interactions with RPCh/HOPR nodes.
+
+![Test](/img/Test.png)

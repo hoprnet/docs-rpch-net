@@ -2,28 +2,59 @@
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Using Any Wallet
 
 This tutorial gives an overview of how to run RPCh locally using a Docker connector. This setup allows you to add RPCh as a drop-in replacement to any wallet you use across any chain. Make sure to adjust the chain ID to match your chain, as the example below uses Gnosis.
 
 Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](./Running-RPCh-on-block-wallet.md)
+
 ## Running RPCh with the Docker connector
 
-**Note:** Make sure you have Docker installed on your device
+### How to Install Docker
+
+Make sure you have Docker installed on your device before trying to run RPCh with the Docker Connector.
+
+<Tabs>
+<TabItem value="Linux" label="Linux">
+
+Depending on your distribution, please follow the official guidelines to install and run Docker on your workstation.
+
+- [Installing Docker in Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+- [Installing Docker in Fedora](https://docs.docker.com/engine/install/fedora/)
+- [Installing Docker in Debian](https://docs.docker.com/engine/install/debian/)
+- [Installing Docker in CentOS](https://docs.docker.com/engine/install/centos/)
+
+</TabItem>
+<TabItem value="mac" label="macOS">
+
+1. Visit [Docker](https://www.docker.com/get-started) and download Docker Desktop to your computer.
+2. Follow the wizard steps to ensure Docker is installed.
+3. Ensure the installation was successful by running `docker ps` in your terminal.
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+
+1. Visit [Docker](https://www.docker.com/get-started) and download Docker Desktop to your computer.
+2. Follow the wizard steps to ensure Docker is installed.
+3. Ensure the installation was successful by running `docker ps` in your terminal.
+
+</TabItem>
+</Tabs>
+
+### How to Run RPCh
 
 (**1**) Go to access.rpch.net and click the `Download` button under the Docker Connector installation tab. This will generate your unique secret access token and corresponding commands.
 
 ![Download Button](/img/Download_button.png)
 
-(**2**) From the pop-up, copy the first command, titled: `Docker pull command`,  and paste it into your terminal. 
-
-![Docker pull command](/img/First_command.png)
-
-(**3**) Once the download completes, copy the `Run RPCh` command and paste it into your terminal. 
+(**2**) Once the download completes, copy the `Run RPCh` command and paste it into your terminal. 
 
 ![Docker Run](/img/Run_RPCh_command2.png)
 
-(**4**) Now you have RPCh running. You can use it on any wallet by adding the URL from the pop-up to your wallet as the RPC URL for a new network. 
+(**3**) That's all! Now you have RPCh running, You can use it on any wallet by adding the local URL from the pop-up to your wallet as the RPC URL for a new network. 
 
 **Note:** If you are using a VPS to run RPCh, replace `localhost` with your VPS IP address, for example: `http://142.93.5.175:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net` would be my RPC URL if my VPS had the IP address: `142.93.5.175`.
 
@@ -35,11 +66,16 @@ This endpoint is the same for everyone, so you can copy it from here:
 http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net
 ```
 
-Here is an example of adding this to MetaMask for the Gnosis chain with chain ID: 100
+Here is an example of adding this to MetaMask for the `Gnosis chain` with chain ID: `100`. If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1`.
 
 ![MetaMask Example](/img/MetaMask_example2.png)
 
-Here is a demo video of the installation process. For this, I’m using a VPS to run the commands.
+### Installation Demo
+
+Here is a demo video of the installation process. For this:
+
+- I'm using a VPS, so replace `localhost` withe my VPS IP address for the exit URL. You won't need to do this if you are running RPCh locally on your terminal.
+- I donwload the server using the `Docker Pull` command from the pop-up. This is an optional step that you can skip.
 
 <p align="center" style={{"marginRight": "100px", "marginTop": "20px", "marginBottom": "20px"}}>
     <video width="960" frameborder="0" allow="autoplay; fullscreen" allowfullscreen controls >
@@ -50,3 +86,25 @@ Here is a demo video of the installation process. For this, I’m using a VPS to
 **Note:** With this setup, you can RPCh on any wallet and on any chain. Just choose the correct corresponding chain ID and use the same RPC URL.
 
 Once RPCh stops running, this network will no longer work on your wallet. To avoid having to copy/paste the commands every time you want to use your wallet, you may want to use [tmux](https://linuxize.com/post/getting-started-with-tmux/) with a VPS to run RPCh 24/7, so you can use your new custom network whenever you want. 
+
+## Test that it works
+
+### Inspect Browser Wallet
+
+Once you have added the new Network to your wallet you can test that it is actually working by inspecting your browser wallet. The instructions below show how to do this for Chrome.
+
+(**1**) Go to your browser's extensions page. For chrome you can type the following URL into your search bar: `chrome://extensions/`
+
+(**2**) Locate your browser wallet and click on the hyperlinked `service worker`/`background page`/`background.html` text at the bottom of your extension. 
+
+![Inspect](/img/Extensions_chrome_inspect.png)
+
+(**3**) With the newly exposed console window open, connect to an exchange such as [SushiSwap](https://www.sushi.com/swap) and see exactly what your wallet is doing, including its interactions with RPCh/HOPR nodes.
+
+![Test](/img/Test.png)
+
+### Terminal Logs
+
+Check your terminal logs to make sure the server is still running fine.
+
+![Logs](/img/Logs.png)
