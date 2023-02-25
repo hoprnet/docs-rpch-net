@@ -5,9 +5,9 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Using Any Wallet
+# Using Any Wallet / EVM Chain
 
-This tutorial gives an overview of how to run RPCh locally using a Docker connector. This setup allows you to add RPCh as a drop-in replacement to any wallet you use across any chain. Make sure to adjust the chain ID to match your chain, as the example below uses Gnosis.
+This tutorial gives an overview of how to run RPCh locally using a Docker connector. This setup allows you to add RPCh as a drop-in replacement to any wallet you use across any chain. Make sure to adjust the chain ID to match your provider, as the example below and the default provider use Gnosis.
 
 Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](./Running-RPCh-on-block-wallet.md)
 
@@ -48,7 +48,7 @@ Depending on your distribution, please follow the official guidelines to install
 
 (**1**) Go to access.rpch.net and click the `Download` button under the Docker Connector installation tab. This will generate your unique secret access token and corresponding commands.
 
-![Download Button](/img/Download_button.png)
+![Download Button](/img/access_screenshot_1.png)
 
 (**2**) Once the download completes, copy the `Run RPCh` command and paste it into your terminal. 
 
@@ -65,11 +65,27 @@ This original endpoint is the same for everyone, so you can copy it from here:
 ```
 http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net
 ```
-### Example Use
+### Example Use: Default (Gnosis)
 
-Here is an example of adding this to MetaMask for the `Gnosis chain` with chain ID: `100`. If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1`.
+Here is an example of adding this to MetaMask for the `Gnosis chain` with chain ID: `100`. This is the default chain for the provided URL: `http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net`.
+
+If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1` along with a new provider to insteaad of the default: `https://primary.gnosis-chain.rpc.hoprtech.net`. See example [here.](./Using-RPCh-with-your-own-wallet.md#example-use-any-evm-chain)
 
 ![MetaMask Example](/img/MetaMask_example2.png)
+
+### Example Use: Any EVM Chain
+
+To use any other chain, change the exit provider and the chain ID, when adding a new wallet. For example to use RPCh with the Binance Smart Chain, I would need its Chain ID: `56` and an RPC exit provider such as: `https://bsc-dataseed4.binance.org`. You can find providers and chain information for your desired chain using [chainlist](https://chainlist.org/). 
+
+New RPC URL (Binance Smart Chain):
+
+```
+http://localhost:8080/?exit-provider=https://bsc-dataseed4.binance.org
+```
+
+Example using new provider and chain ID (Binance Smart Chain):
+
+![RPCh Binance](/img/RPCh_over_Binance1.png)
 
 ### Installation Demo
 
