@@ -20,6 +20,8 @@ BlockWallet is the first wallet to partner with RPCh and integrate with RPCh Alp
 
 ![Setup BlockWallet](/img/BlockWallet_start_up_3.png)
 
+That's all! Make sure to use the network `Gnosis over RPCh` for complete privacy while using the Gnosis chain!
+
 ## Download from GitHub
 
 Alternatively, you can download the RPCh integrated release from GitHub.
