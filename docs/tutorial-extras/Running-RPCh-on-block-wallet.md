@@ -44,7 +44,7 @@ Alternatively, you can download the RPCh integrated release from GitHub.
 
 ![Setup BlockWallet](/img/BlockWallet_start_up_3.png)
 
-That’s all! Just set up the wallet as prompted, and all your Gnosis chain transactions will be completely private!
+That’s all! Just set up the wallet as prompted, and all your Gnosis chain transactions will be completely private! Make sure you use the Network `Gnosis on RPCh`.
 
 Here's a short tutorial of the installation process:
 
