@@ -80,23 +80,32 @@ const config = {
       // Replace with your project's social card
    //   image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Docs',
         logo: {
           alt: 'My Site Logo',
           src: 'img/RPCh.png',
         },
         items: [
           {
-            type: 'doc',
-            docId: 'tutorial-basics/What-is-RPCh',
+            type: 'docsVersionDropdown',
             position: 'left',
-            label: 'Current version',
+            dropdownItemsAfter: [],
+            dropdownActiveClassDisabled: true
+          },
+          {
+            href: 'https://twitter.com/hoprnet',
+            label: 'Twitter',
+            position: 'right'
+          },
+          {
+            href: 'https://discord.gg/VRyTQTNBTy',
+            label: 'Discord',
+            position: 'right'
           },
           {
             href: 'https://github.com/Rpc-h/RPCh',
             label: 'GitHub',
             position: 'right',
-          },
+          }
         ],
       },
       footer: {
