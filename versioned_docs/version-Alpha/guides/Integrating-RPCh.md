@@ -6,12 +6,12 @@ sidebar_position: 1
 
 This guide assumes you have read and know what [RPCh achieves](https://docs.rpch.net/docs/tutorial-basics/What-is-RPCh) and how the [SDK works](https://docs.rpch.net/docs/tutorial-basics/RPCh-SDK).
 
-This is an implementation guide for helping you integrate RPCh to your favorite `web3` project.
-You can integrate RPCh to any JS based project which needs to send requests to an RPC provider.
+This is an implementation guide for helping you integrate RPCh into your favourite `web3` project.
+You can integrate RPCh into any JS-based project which needs to send requests to an RPC provider.
 
 ## The Libraries
 
-Before we get our hands dirty, we first need to understand the two libraries you need to use to integrate RPCh to your project.
+Before we get our hands dirty, we first need to understand the two libraries you need to use to integrate RPCh into your project.
 
 1. RPCh SDK or RPCh ethers adaptor
 
@@ -25,9 +25,9 @@ Before we get our hands dirty, we first need to understand the two libraries you
 
    The RPCh SDK has to perform various cryptographic magic to make everything possible. This is done via our `RPCh Crypto` libraries which are build in `rust` and compiled to `WASM`.
 
-   RPCh ships three distributions of our RPCh Crypto library ([@rpch/crypto](https://www.npmjs.com/package/@rpch/crypto), [@rpch/crypto-for-web](https://www.npmjs.com/package/@rpch/crypto-for-web), [@rpch/crypto-for-nodejs](https://www.npmjs.com/package/@rpch/crypto-for-nodejs)) which allows you to pick the one that suites your project's environment the most. See [distribution](https://github.com/Rpc-h/crypto#distributions) for more details.
+   RPCh ships three distributions of our RPCh Crypto library ([@rpch/crypto](https://www.npmjs.com/package/@rpch/crypto), [@rpch/crypto-for-web](https://www.npmjs.com/package/@rpch/crypto-for-web), [@rpch/crypto-for-nodejs](https://www.npmjs.com/package/@rpch/crypto-for-nodejs)) which allows you to pick the one that suits your project's environment the most. See [distribution](https://github.com/Rpc-h/crypto#distributions) for more details.
 
-   Once you picked the variant that works best for you, you simply pass it to the SDK.
+   Once you pick the variant that works best for you, you simply pass it to the SDK.
 
 ## Examples
 
