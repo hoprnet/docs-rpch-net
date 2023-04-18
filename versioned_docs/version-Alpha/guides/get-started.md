@@ -15,6 +15,8 @@ Integrating RPCh into your project is as simple as overwriting the methods used 
 
 There are two approaches to this.
 
+**Note:** There is no WebSocket support currently, for either option.
+
 ### Using An Existing RPCh Adapter (ethers)
 
 If your project is using [ethers](https://www.npmjs.com/package/ethers), you can just use the [@rpch/ethers adaptor](https://www.npmjs.com/package/@rpch/ethers), `@rpch/ethers` acts as an abstraction that internally uses `@rpch/sdk` which you can plug n' play.
