@@ -24,7 +24,7 @@ import SDK from "@rpch/sdk";
 const sdk = new SDK(
   {
     crypto: RPChCrypto,
-    client: "your_client_name",
+    client: "trial",
     timeout: 20000,
     discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
   },
