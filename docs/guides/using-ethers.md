@@ -28,7 +28,7 @@ const provider = new RPChProvider(
   PROVIDER_URL,
   {
     crypto: RPChCrypto,
-    client: '',
+    client: 'trial',
     timeout: TIMEOUT,
     discoveryPlatformApiEndpoint: DISCOVERY_PLATFORM_API_ENDPOINT,
   },
