@@ -12,9 +12,20 @@ Through the SDK, the client should be able to send traffic through the RPCh netw
 ## How to use SDK
 You must have Node.js and npm/yarn installed on your computer. You can download them from their official website or use a package manager like Homebrew (for Mac) or Chocolatey (for Windows).
 
+### Install necessary packages
+
 ```
 yarn add @rpch/crypto @rpch/sdk
 ```
+
+Get your rpch client by running
+```
+curl --request GET \
+  --url https://staging.discovery.rpch.tech/api/v1/request/trial
+```
+or go to https://access.rpch.net/ and follow the docker guide
+
+### Using the SDK
 
 You can create an instance of the SDK by passing in the required options and key-value store functions:
 ```TypeScript
@@ -24,7 +35,7 @@ import SDK from "@rpch/sdk";
 const sdk = new SDK(
   {
     crypto: RPChCrypto,
-    client: "your_client_name",
+    client: "trial",
     timeout: 20000,
     discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
   },
@@ -68,6 +79,16 @@ When you are finished using the SDK, be sure to call the stop method:
 await sdk.stop();
 ```
 This will stop any necessary intervals and clear up any remaining processes.
+
+### Enable debugging logs
+
+Depending on which platform you are running the SDK, you need to enable debugging in different ways.
+We use the library [debug](https://github.com/debug-js/debug) for our logging.
+
+- on nodejs: you need to run the instance with the following environment variable `DEBUG="rpch*" ..`
+- on web platforms:
+  - localStorage: update `localStorage` with keyval `debug:rpch*`
+  - programmatic: access the SDK object and enable logging with `sdk.debug.enable("rpch*")`
 
 ## Example Integrations
 
