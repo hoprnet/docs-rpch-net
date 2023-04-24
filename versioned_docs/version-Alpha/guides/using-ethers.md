@@ -11,9 +11,21 @@ The RPCh ethers adaptor is an extension of the original `JsonRpcProvider`, which
 ## How to use RPCh ethers adaptor
 You must have Node.js and npm/yarn installed on your computer. You can download them from their official website or use a package manager like Homebrew (for Mac) or Chocolatey (for Windows).
 
+### Install necessary packages
+
 ```
 yarn add @rpch/crypto @rpch/ethers
 ```
+
+Get your rpch client by running
+```
+curl --request GET \
+  --url https://staging.discovery.rpch.tech/api/v1/request/trial
+```
+
+or go to https://access.rpch.net/ and follow the docker guide
+
+### Using the adapter
 
 You can create an instance of this adaptor by passing in the required options and key-value store functions:
 ```TypeScript
@@ -28,7 +40,7 @@ const provider = new RPChProvider(
   PROVIDER_URL,
   {
     crypto: RPChCrypto,
-    client: '',
+    client: 'trial',
     timeout: TIMEOUT,
     discoveryPlatformApiEndpoint: DISCOVERY_PLATFORM_API_ENDPOINT,
   },
