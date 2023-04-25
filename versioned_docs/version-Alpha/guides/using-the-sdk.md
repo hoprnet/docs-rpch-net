@@ -39,8 +39,8 @@ const sdk = new SDK(
     timeout: 20000,
     discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
   },
-  setKeyValFunction,
-  getKeyValFunction
+  store.set,
+  store.get
 );
 ```
 Here are the available options:
@@ -50,17 +50,30 @@ Here are the available options:
 - timeout: The timeout for requests in milliseconds.
 - discoveryPlatformApiEndpoint: The URL for the discovery platform API.
 
-The setKeyValFunction and getKeyValFunction functions are used to store and retrieve key-value pairs for the SDK. These are used to store counters for outgoing requests and responses.
+The createAsyncKeyValStore function creates an async key-value store using a JS Map. It returns an object with two methods. These two functions will be used by the SDK to manage its internal state:
+
+- `set`: Asynchronously store a key-value pair.
+- `get`: Asynchronously retrieve the value associated with a key. 
+
+These are used to store counters for outgoing requests and responses.
 
 ```TypeScript
-// This is an example of a simple way to set these functions
-async function setKeyVal(key: string, val: string): Promise<void> {
-  localStorage.setItem(key, val);
+// Create a custom async key-value store
+function createAsyncKeyValStore() {
+  const store = new Map();
+
+  return {
+    async set(key, value) {
+      store.set(key, value);
+    },
+    async get(key) {
+      return store.get(key);
+    },
+  };
 }
 
-async function getKeyVal(key: string): Promise<string | undefined> {
-  return localStorage.getItem(key);
-}
+const store = createAsyncKeyValStore();
+```
 ```
 
 Before you can send requests through the SDK, you must start it by calling the start method:
@@ -87,7 +100,7 @@ We use the library [debug](https://github.com/debug-js/debug) for our logging.
 
 - on nodejs: you need to run the instance with the following environment variable `DEBUG="rpch*" ..`
 - on web platforms:
-  - localStorage: update `localStorage` with keyval `debug:rpch*`
+  - Update the key-value store created earlier with the key-value pair `debug:rpch*`, e.g. with `store.set("debug", "rpch*");`
   - programmatic: access the SDK object and enable logging with `sdk.debug.enable("rpch*")`
 
 ## Example Integrations
@@ -126,24 +139,12 @@ const RPChCrypto = require("@rpch/crypto");
 const SDK = require("@rpch/sdk").default;
 ```
 
-#### (2) Implement local storage helper functions:
+#### (2) Create a custom async key-value store:
 
-These two functions will be used by the SDK to manage its internal state.
+The createAsyncKeyValStore function creates an async key-value store using a JS Map. It returns an object with two methods. These two functions will be used by the SDK to manage its internal state:
 
-- `setKeyVal`: Asynchronously store a key-value pair in the local storage.
-- `getKeyVal`: Asynchronously retrieve the value associated with a key from the local storage.
-
-```TypeScript
-async function setKeyVal(key, val) {
-  localStorage.setItem(key, val);
-}
-
-async function getKeyVal(key) {
-  return localStorage.getItem(key);
-}
-```
-
-**Note:** The original script does not define `localStorage` so this implementation will only work for a single request. To fix this it is good practice to use a custom async key-value store to create an in-memory storage solution.
+- `set`: Asynchronously store a key-value pair.
+- `get`: Asynchronously retrieve the value associated with a key.
 
 ```TypeScript
 // Create a custom async key-value store
@@ -163,26 +164,9 @@ function createAsyncKeyValStore() {
 const store = createAsyncKeyValStore();
 ```
 
-If using this approach you will need to use `store.set, store.get` instead of `setKeyVal, getKeyVal` when initializing the SDK.
-
 #### (3) Initialize the RPCh SDK:
 
-Create a new instance of the SDK with the necessary parameters and the local storage functions.
-
-```TypeScript
-const sdk = new SDK(
-  {
-    crypto: RPChCrypto,
-    client: "trial",
-    timeout: 20000,
-    discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
-  },
-  setKeyVal,
-  getKeyVal
-);
-```
-
-If using the custom async key-value store in step 2:
+Create a new instance of the SDK with the necessary parameters and the storage functions.
 
 ```TypeScript
 // Initialize the SDK
