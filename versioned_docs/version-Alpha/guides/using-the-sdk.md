@@ -74,7 +74,6 @@ function createAsyncKeyValStore() {
 
 const store = createAsyncKeyValStore();
 ```
-```
 
 Before you can send requests through the SDK, you must start it by calling the start method:
 ```TypeScript
