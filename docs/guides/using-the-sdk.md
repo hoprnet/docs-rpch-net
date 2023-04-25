@@ -262,4 +262,4 @@ The above method does the following:
 - Return the block details
 
 The remaining few lines of [the script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs) just call the method and handle its response.
-This script was created as an educational use case. For custom integrations of RPCh within your project, you will have to similarly setup and initialize the SDK before overwriting its existing interaction with its provider with ones that use the SDK as this [example script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs) does. 
+This script serves as a learning resource to help you understand how to use the RPCh SDK. When incorporating RPCh into your own projects, you'll need to follow similar steps for setting up and initializing the SDK. Then, you should replace the default provider interactions with your own custom interactions that utilize the SDK, as demonstrated in this [example script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs). 
