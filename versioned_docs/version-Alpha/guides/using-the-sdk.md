@@ -99,7 +99,7 @@ We use the library [debug](https://github.com/debug-js/debug) for our logging.
 
 - on nodejs: you need to run the instance with the following environment variable `DEBUG="rpch*" ..`
 - on web platforms:
-  - Update the key-value store created earlier with the key-value pair `debug:rpch*`, e.g. with `store.set("debug", "rpch*");`
+  - localStorage: update `localStorage` with keyval `debug:rpch*`
   - programmatic: access the SDK object and enable logging with `sdk.debug.enable("rpch*")`
 
 ## Example Integrations
