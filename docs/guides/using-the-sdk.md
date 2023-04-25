@@ -143,6 +143,28 @@ async function getKeyVal(key) {
 }
 ```
 
+**Note:** The original script does not define `localStorage` so this implementation will only work for a single request. To fix this it is good practice to use a custom async key-value store to create an in-memory storage solution.
+
+```TypeScript
+// Create a custom async key-value store
+function createAsyncKeyValStore() {
+  const store = new Map();
+
+  return {
+    async set(key, value) {
+      store.set(key, value);
+    },
+    async get(key) {
+      return store.get(key);
+    },
+  };
+}
+
+const store = createAsyncKeyValStore();
+```
+
+If using this approach you will need to use `store.set, store.get` instead of `setKeyVal, getKeyVal` when initializing the SDK.
+
 #### (3) Initialize the RPCh SDK:
 
 Create a new instance of the SDK with the necessary parameters and the local storage functions.
@@ -151,12 +173,28 @@ Create a new instance of the SDK with the necessary parameters and the local sto
 const sdk = new SDK(
   {
     crypto: RPChCrypto,
-    client: "your_client_name",
+    client: "trial",
     timeout: 20000,
     discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
   },
   setKeyVal,
   getKeyVal
+);
+```
+
+If using the custom async key-value store in step 2:
+
+```TypeScript
+// Initialize the SDK
+const sdk = new SDK(
+  {
+    crypto: RPChCrypto,
+    client: "trial",
+    timeout: 20000,
+    discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
+  },
+  store.set,
+  store.get
 );
 ```
 
