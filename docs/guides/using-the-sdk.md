@@ -39,8 +39,8 @@ const sdk = new SDK(
     timeout: 20000,
     discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
   },
-  setKeyValFunction,
-  getKeyValFunction
+  store.set,
+  store.get
 );
 ```
 Here are the available options:
@@ -50,17 +50,29 @@ Here are the available options:
 - timeout: The timeout for requests in milliseconds.
 - discoveryPlatformApiEndpoint: The URL for the discovery platform API.
 
-The setKeyValFunction and getKeyValFunction functions are used to store and retrieve key-value pairs for the SDK. These are used to store counters for outgoing requests and responses.
+The createAsyncKeyValStore function creates an async key-value store using a JS Map. It returns an object with two methods. These two functions will be used by the SDK to manage its internal state:
+
+- `set`: Asynchronously store a key-value pair.
+- `get`: Asynchronously retrieve the value associated with a key. 
+
+These are used to store counters for outgoing requests and responses.
 
 ```TypeScript
-// This is an example of a simple way to set these functions
-async function setKeyVal(key: string, val: string): Promise<void> {
-  localStorage.setItem(key, val);
+// Create a custom async key-value store
+function createAsyncKeyValStore() {
+  const store = new Map();
+
+  return {
+    async set(key, value) {
+      store.set(key, value);
+    },
+    async get(key) {
+      return store.get(key);
+    },
+  };
 }
 
-async function getKeyVal(key: string): Promise<string | undefined> {
-  return localStorage.getItem(key);
-}
+const store = createAsyncKeyValStore();
 ```
 
 Before you can send requests through the SDK, you must start it by calling the start method:
@@ -100,10 +112,137 @@ Looking at other examples of such integrations will be useful, even if they cann
 
 This integration example will be added soon.
 
-### RPC server
+### RPC Server
 
 You can see how the SDK was used similarly within the RPC server [here.](https://github.com/Rpc-h/RPCh/blob/f1bc164a9671f9e1ce6c7b204a47def4c5a16179/apps/rpc-server/src/index.ts#L55)
 
 | environment       | example                                                                                                                                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | node.js           | [repo](https://github.com/Rpc-h/RPCh/tree/main/apps/rpc-server), [Example 1](https://github.com/Rpc-h/RPCh/blob/f1bc164a9671f9e1ce6c7b204a47def4c5a16179/apps/rpc-server/src/index.ts#L55)                                        |
+
+### Simple Use Case
+
+The following script is a straightforward example demonstrating how to use the RPCh SDK to request the details of the latest block from the Ethereum blockchain. This is not a full integration example, but it serves as a guide for understanding the SDK's usage.
+
+You can view the simple script [here.](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs)
+
+The script shows five steps which are instructional for any integration.
+
+#### (1) Import required modules:
+
+- RPChCrypto: Import the necessary cryptographic functions from your chosen version of RPCh Crypto (here: "@rpch/crypto") package.
+- SDK: Import the main class for interacting with the RPCh platform from the "@rpch/sdk" package.
+
+```TypeScript
+const RPChCrypto = require("@rpch/crypto");
+const SDK = require("@rpch/sdk").default;
+```
+
+#### (2) Create a custom async key-value store:
+
+The createAsyncKeyValStore function creates an async key-value store using a JS Map. It returns an object with two methods. These two functions will be used by the SDK to manage its internal state:
+
+- `set`: Asynchronously store a key-value pair.
+- `get`: Asynchronously retrieve the value associated with a key.
+
+```TypeScript
+// Create a custom async key-value store
+function createAsyncKeyValStore() {
+  const store = new Map();
+
+  return {
+    async set(key, value) {
+      store.set(key, value);
+    },
+    async get(key) {
+      return store.get(key);
+    },
+  };
+}
+
+const store = createAsyncKeyValStore();
+```
+
+#### (3) Initialize the RPCh SDK:
+
+Create a new instance of the SDK with the necessary parameters and the storage functions.
+
+```TypeScript
+// Initialize the SDK
+const sdk = new SDK(
+  {
+    crypto: RPChCrypto,
+    client: "trial",
+    timeout: 20000,
+    discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
+  },
+  store.set,
+  store.get
+);
+```
+
+#### (4) Start & Stop the SDK Before & After Using it:
+
+- Start the SDK with `await sdk.start()`
+- Stop the SDK with `await sdk.stop()`
+
+```TypeScript
+async function getLatestBlock() {
+  await sdk.start();
+  // ... (code from the original script)
+  await sdk.stop();
+}
+```
+
+#### (5) Correctly Use the Create & Send Request Functions:
+
+Sending a requests consists of 2 steps:
+
+- Creating the request `const req = await sdk.createRequest("provider", "body");` The first argument is the provider name and the second argument is the request body.
+- Sending the previously created request `const res = await sdk.sendRequest(req);` This will send the request through the HOPR network and return the response. If there is an error, it will be thrown.
+
+You can see this used correctly within the main method of the script:
+
+```TypeScript
+async function getLatestBlock() {
+  await sdk.start();
+
+  // Create and send a request to get the latest block number
+  const blockNumberRequest = await sdk.createRequest(
+    "ethereum",
+    JSON.stringify({ jsonrpc: "2.0", id: 1, method: "eth_blockNumber", params: [] })
+  );
+  const blockNumberResponse = await sdk.sendRequest(blockNumberRequest);
+  const blockNumber = parseInt(blockNumberResponse.body.result, 16);
+
+  // Create and send a request to get the block details
+  const blockDetailsRequest = await sdk.createRequest(
+    "provider",
+    JSON.stringify({
+      jsonrpc: "2.0",
+      id: 2,
+      method: "eth_getBlockByNumber",
+      params: [blockNumber, true],
+    })
+  );
+  const blockDetailsResponse = await sdk.sendRequest(blockDetailsRequest);
+
+  await sdk.stop();
+
+  return JSON.parse(blockDetailsResponse.body.result);
+}
+```
+
+The above method does the following:
+
+- Start the SDK with `await sdk.start()`
+- Create and send a request to get the latest block number using the `eth_blockNumber` method 
+- Parse the response to obtain the block number
+- Convert the block number from hexadecimal to an integer
+- Create and send a request to get the details of the latest block by its number using the `eth_getBlockByNumber` method
+- Parse the response to obtain the block details
+- Stop the SDK with `await sdk.stop()`
+- Return the block details
+
+The remaining few lines of [the script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs) just call the method and handle its response.
+This script serves as a learning resource to help you understand how to use the RPCh SDK. When incorporating RPCh into your own projects, you'll need to follow similar steps for setting up and initializing the SDK. Then, you should replace the default provider interactions with your own custom interactions that utilize the SDK, as demonstrated in this [example script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs). 
