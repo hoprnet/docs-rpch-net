@@ -17,14 +17,22 @@ There are two approaches to this.
 
 **Note:** There is no WebSocket support currently, for either option.
 
-### Using An Existing RPCh Adapter (ethers)
+### Using An Existing RPCh Adapter
 
-If your project is using [ethers](https://www.npmjs.com/package/ethers), you can just use the [@rpch/ethers adaptor](https://www.npmjs.com/package/@rpch/ethers), `@rpch/ethers` acts as an abstraction that internally uses `@rpch/sdk` which you can plug n' play.
+There are currently two RPCh adapters available for intergration:
+
+- [RPCh ethers](./using-ethers.md) 
+- [RPCh ethereum-provider](./using-ethereum-provider.md)
+
+If your project is using either [ethers](https://www.npmjs.com/package/ethers) or [ethereum-provider](https://github.com/floating/ethereum-provider), you can use the corresponding adapter. The adapters act as an abstraction that internally uses `@rpch/sdk` which you can plug n' play. 
 
 This is the easiest method of integration, allowing you to route your project's RPC requests through RPCh with only a few lines of code.
-The integration process and an example integration can be found [here.](./using-ethers.md)
+The integration process and an example integration can be found here: 
 
-**Note:** Currently, there is only an adapter created for ethers. If this option is unavailable, you must use the RPCh SDK directly.
+- [For ethers](./using-ethers.md)
+- [For ethereum-provider](./using-ethereum-provider.md)
+
+**Note:** Currently, there is only these two adapters. If this option is unavailable, you must use the RPCh SDK directly.
 
 ### Using The RPCh SDK
 
