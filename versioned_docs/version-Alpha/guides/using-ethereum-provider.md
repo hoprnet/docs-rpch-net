@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# RPCh ethers adapter
+# RPCh ethereum-provider adapter
 
 ## Description
 
