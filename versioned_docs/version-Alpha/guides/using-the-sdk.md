@@ -104,13 +104,19 @@ We use the library [debug](https://github.com/debug-js/debug) for our logging.
 
 ## Example Integrations
 
-Using the SDK directly will not have an as standardised approach as using an RPCh adapter such as our [ethers adapter.](./using-ethers.md) Instead, it will require a little more effort to understand the project's codebase, where it is interacting with its provider and what methods to overwrite. 
+Using the SDK directly will not have an as standardized approach as using an RPCh adapter such as our [ethers adapter.](./using-ethers.md) Instead, it will require a little more effort to understand the project's codebase, where it is interacting with its provider and what methods to overwrite. 
 
 Looking at other examples of such integrations will be useful, even if they cannot be copied one-to-one. The below documentation will be updated with the Frame Wallet integration soon.
 
 ### Frame
 
-This integration example will be added soon.
+Frame is a crypto wallet, and the following example is an integration of RPCh into its browser extension. The integrated repository can be found [here.](https://github.com/Rpc-h/extension-frame)
+
+You can see a prominent amendment made [here.](https://github.com/Rpc-h/extension-frame/blob/add-rpch-provider/main/chains/index.js#L181)
+
+| repository       | example                                                                                                                                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Frame](https://github.com/Rpc-h/extension-frame) | [Amendment 1](https://github.com/Rpc-h/extension-frame/blob/add-rpch-provider/main/chains/index.js#L181) |
 
 ### RPC Server
 
@@ -127,6 +133,8 @@ The following script is a straightforward example demonstrating how to use the R
 You can view the simple script [here.](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs)
 
 The script shows five steps which are instructional for any integration.
+
+**Note:** Parts 2 & 3 of the instructions below use a slightly altered version of the script as the original script does not define `localStorage`. This creates the issue of only one request being able to be processed, which is solved in the altered instructions below using a custom async key-value store.
 
 #### (1) Import required modules:
 
@@ -165,7 +173,7 @@ const store = createAsyncKeyValStore();
 
 #### (3) Initialize the RPCh SDK:
 
-Create a new instance of the SDK with the necessary parameters and the storage functions.
+Create a new instance of the SDK with the necessary parameters and storage functions.
 
 ```TypeScript
 // Initialize the SDK
@@ -196,7 +204,7 @@ async function getLatestBlock() {
 
 #### (5) Correctly Use the Create & Send Request Functions:
 
-Sending a requests consists of 2 steps:
+Sending a request consists of 2 steps:
 
 - Creating the request `const req = await sdk.createRequest("provider", "body");` The first argument is the provider name and the second argument is the request body.
 - Sending the previously created request `const res = await sdk.sendRequest(req);` This will send the request through the HOPR network and return the response. If there is an error, it will be thrown.
