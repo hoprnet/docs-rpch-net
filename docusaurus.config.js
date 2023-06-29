@@ -112,7 +112,10 @@ const config = {
         copyright: `©${new Date().getFullYear()} HOPR Association, all rights reserved`
       },
       image: 'img/RPCh.png',
-      metadata: [{name: 'twitter:card', content: 'summary'}],
+      metadata: [
+        {name: 'twitter:card', content: 'summary'},
+        {name: 'twitter:image', content: 'https://docs.rpch.net/img/RPCh.png'},
+      ],
       // footer: {
       //   style: 'dark',
       //   links: [
