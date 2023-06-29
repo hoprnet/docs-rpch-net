@@ -112,6 +112,7 @@ const config = {
         copyright: `©${new Date().getFullYear()} HOPR Association, all rights reserved`
       },
       image: 'img/RPCh.png',
+      twitter: 'img/RPCh.png',
       // footer: {
       //   style: 'dark',
       //   links: [
