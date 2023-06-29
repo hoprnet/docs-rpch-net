@@ -111,6 +111,7 @@ const config = {
       footer: {
         copyright: `©${new Date().getFullYear()} HOPR Association, all rights reserved`
       },
+      image: 'img/RPCh_Logo.svg',
       // footer: {
       //   style: 'dark',
       //   links: [

@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 This tutorial gives an overview of how to run RPCh locally using a Docker connector. This setup allows you to add RPCh as a drop-in replacement to any wallet you use across any chain. Make sure to adjust the chain ID to match your provider, as the example below and the default provider use Gnosis.
 <!--
 
-Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](./Running-RPCh-on-block-wallet.md)
+Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](INSERT LINK)
 
 -->
 ## Running RPCh with the Docker connector
