@@ -82,7 +82,7 @@ const config = {
       navbar: {
         logo: {
           alt: 'My Site Logo',
-          src: 'img/RPCh.png',
+          src: 'img/RPCh_Logo.svg',
         },
         items: [
           {
