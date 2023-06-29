@@ -113,7 +113,7 @@ const config = {
       },
       image: 'img/RPCh.png',
       metadata: [
-        {name: 'twitter:card', content: 'summary'},
+        {name: 'twitter:card', content: 'summary_large_image'},
         {name: 'twitter:image', content: 'https://docs.rpch.net/img/RPCh.png'},
       ],
       // footer: {
