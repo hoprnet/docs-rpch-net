@@ -30,6 +30,9 @@ The SDK also has to interact with the discovery platform to choose suitable entr
 
 Currently, with RPCh Alpha, no reliability score is maintained. This will be introduced in RPCh Beta along with the introduction of Kevlar.
 
+
+<!--
 ### Kevlar
 
 Kevlar adds light client verification, verifying the integrity of responses sent back from the RPC provider. It requests block headers from a given list of provers and generates several requests for every response that passes through Kevlar. It will then attempt to sync to the latest beacon chain block header to verify the integrity of the following RPC response.
+-->

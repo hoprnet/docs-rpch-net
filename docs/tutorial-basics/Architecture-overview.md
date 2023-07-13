@@ -29,7 +29,7 @@ On top of this RPCh adds a layer of encryption to the message which is only decr
 - **Entry node:** Communicates with the client’s wallet and generates encrypted relays for the request.
 - **Exit node:** Communicates with the provider and generates encrypted relays for the response.
 - **HOPR mixnet:** Obscures the source and destination of the data being transmitted.
-- **Kevlar:** Verifies the integrity of RPC responses returned to the wallet.
+- **Discovery Platform:** Registers, stores and measures the reliability of HOPR nodes used as entry/exit nodes for RPCh relays 
 
 In a very simple sense, we are just allowing the client to connect to the RPCh network, where they communicate with an entry node that will translate, encrypt and route the request across the HOPR mixnet to an exit node that will communicate the request to the provider. The exit node will then receive the response and send it back to the entry node in a similar fashion. Finally, the entry node will send it back to the client with one layer of verification added through Kevlar to maintain the integrity of the response.
 
