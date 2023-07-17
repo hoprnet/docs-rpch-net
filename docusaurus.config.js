@@ -82,7 +82,7 @@ const config = {
       navbar: {
         logo: {
           alt: 'My Site Logo',
-          src: 'img/RPCh.png',
+          src: 'img/RPCh_Logo.svg',
         },
         items: [
           {
@@ -111,6 +111,11 @@ const config = {
       footer: {
         copyright: `©${new Date().getFullYear()} HOPR Association, all rights reserved`
       },
+      image: 'img/RPCh.png',
+      metadata: [
+        {name: 'twitter:card', content: 'summary_large_image'},
+        {name: 'twitter:image', content: 'https://docs.rpch.net/img/RPCh.png'},
+      ],
       // footer: {
       //   style: 'dark',
       //   links: [

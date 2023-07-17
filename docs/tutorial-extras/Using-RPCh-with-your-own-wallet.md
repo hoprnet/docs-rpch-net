@@ -8,9 +8,11 @@ import TabItem from '@theme/TabItem';
 # Using Any Wallet / EVM Chain
 
 This tutorial gives an overview of how to run RPCh locally using a Docker connector. This setup allows you to add RPCh as a drop-in replacement to any wallet you use across any chain. Make sure to adjust the chain ID to match your provider, as the example below and the default provider use Gnosis.
+<!--
 
-Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](./Running-RPCh-on-block-wallet.md)
+Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](INSERT LINK)
 
+-->
 ## Running RPCh with the Docker connector
 
 ### Install Docker
@@ -46,7 +48,7 @@ Depending on your distribution, please follow the official guidelines to install
 
 ### How to Run RPCh
 
-(**1**) Go to access.rpch.net and click the `Download` button under the Docker Connector installation tab. This will generate your unique secret access token and corresponding commands.
+(**1**) Go to [access.rpch.net](https://access.rpch.net/) and click the `Download` button under the Docker Connector installation tab. This will generate your unique secret access token and corresponding commands.
 
 ![Download Button](/img/access_screenshot_1.png)
 
@@ -69,7 +71,7 @@ http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.n
 
 Here is an example of adding this to MetaMask for the `Gnosis chain` with chain ID: `100`. This is the default chain for the provided URL: `http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net`.
 
-If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1` along with a new provider to insteaad of the default: `https://primary.gnosis-chain.rpc.hoprtech.net`. See example [here.](./Using-RPCh-with-your-own-wallet.md#example-use-any-evm-chain)
+If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1` along with a new provider to instead of the default: `https://primary.gnosis-chain.rpc.hoprtech.net`. See example [here.](./Using-RPCh-with-your-own-wallet.md#example-use-any-evm-chain)
 
 ![MetaMask Example](/img/MetaMask_example2.png)
 
@@ -91,7 +93,7 @@ Example using new provider and chain ID (Binance Smart Chain):
 
 Here is a demo video of the installation process. For this:
 
-- I'm using a VPS, so replace `localhost` withe my VPS IP address for the exit URL. You won't need to do this if you are running RPCh locally on your terminal.
+- I'm using a VPS, so replace `localhost` with my VPS IP address for the exit URL. You won't need to do this if you are running RPCh locally on your terminal.
 - I donwload the server using the `Docker Pull` command from the pop-up. This is an optional step that you can skip.
 
 <p align="center" style={{"marginRight": "100px", "marginTop": "20px", "marginBottom": "20px"}}>
@@ -108,7 +110,7 @@ Once RPCh stops running, this network will no longer work on your wallet. To avo
 
 ### Inspect Browser Wallet
 
-Once you have added the new Network to your wallet you can test that it is actually working by inspecting your browser wallet. The instructions below show how to do this for Chrome.
+Once you have added the new network to your wallet, you can test that it is actually working by inspecting your browser wallet. The instructions below show how to do this for Chrome.
 
 (**1**) Go to your browser's extensions page. For chrome you can type the following URL into your search bar: `chrome://extensions/`
 
@@ -128,7 +130,7 @@ Check your terminal logs to make sure the server is still running fine.
 
 ### Configuring logs
 
-You can configure your logs to reduce spam by editing the docker command you are running. After the `Debug` tag you can list paths you do not want to see, e.g. add `-rpch:somepath`. By default the original commad provided to you does not show logs for RPCh metrics. Note: `DEBUG="rpch*, -*metrics"`, this asks it to print all RPCh logs except the metrics.
+You can configure your logs to reduce spam by editing the docker command you are running. After the `Debug` tag you can list paths you do not want to see, e.g. add `-rpch:somepath`. By default, the original command provided to you does not show logs for RPCh metrics. Note: `DEBUG="rpch*, -*metrics"`, this asks it to print all RPCh logs except the metrics.
 
 ```
 docker run -e DEBUG="rpch*,-*metrics" -e RESPONSE_TIMEOUT=10000 -e DISCOVERY_PLATFORM_API_ENDPOINT=https://staging.discovery.rpch.tech -e PORT=8080 -e DATA_DIR=app -e CLIENT=shoulder-chapter-stems-broke-particular  --name rpc-server -p 8080:8080 --rm  europe-west6-docker.pkg.dev/rpch-375921/rpch/rpc-server:f8a6bf7

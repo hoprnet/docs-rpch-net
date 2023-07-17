@@ -106,7 +106,7 @@ We use the library [debug](https://github.com/debug-js/debug) for our logging.
 
 Using the SDK directly will not have an as standardized approach as using an RPCh adapter such as our [ethers adapter.](./using-ethers.md) Instead, it will require a little more effort to understand the project's codebase, where it is interacting with its provider and what methods to overwrite. 
 
-Looking at other examples of such integrations will be useful, even if they cannot be copied one-to-one. The below documentation will be updated with the Frame Wallet integration soon.
+<!--- Looking at other examples of such integrations will be useful, even if they cannot be copied one-to-one. The below documentation will be updated with the Frame Wallet integration soon.
 
 ### Frame
 
@@ -117,6 +117,8 @@ You can see a prominent amendment made [here.](https://github.com/Rpc-h/extensio
 | repository       | example                                                                                                                                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Frame](https://github.com/Rpc-h/extension-frame) | [Amendment 1](https://github.com/Rpc-h/extension-frame/blob/add-rpch-provider/main/chains/index.js#L181) |
+
+--->
 
 ### RPC Server
 
