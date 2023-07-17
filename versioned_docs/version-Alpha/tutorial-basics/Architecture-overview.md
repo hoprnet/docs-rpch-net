@@ -23,7 +23,7 @@ On top of this RPCh adds a layer of encryption to the message which is only decr
 
 ### Key components
 
-![Simple Explainer](/img/RPCh_simple_explainer.png)
+![Simple Explainer](/img/RPCh-Architecture-Docs-Update.png)
 
 - **RPCh SDK:** a library the client uses to access the RPCh network. This is also necessary for translating requests into something the HOPR network can understand. 
 - **Entry node:** Communicates with the client’s wallet and generates encrypted relays for the request.
