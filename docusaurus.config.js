@@ -111,7 +111,7 @@ const config = {
       footer: {
         copyright: `©${new Date().getFullYear()} HOPR Association, all rights reserved`
       },
-      image: 'img/RPCh.png',
+      image: 'img/RPCh_Twitter_Logo.png',
       metadata: [
         {name: 'twitter:card', content: 'summary_large_image'},
         {name: 'twitter:image', content: 'https://docs.rpch.net/img/RPCh_Twitter_Logo.png'},
