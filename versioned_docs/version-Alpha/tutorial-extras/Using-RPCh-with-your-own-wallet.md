@@ -50,7 +50,7 @@ Depending on your distribution, please follow the official guidelines to install
 
 (**1**) Go to [access.rpch.net](https://access.rpch.net/) and click the `Download` button under the Docker Connector installation tab. This will generate your unique secret access token and corresponding commands.
 
-![Download Button](/img/access_screenshot_1.png)
+![Download Button](/img/access_screenshot_1_no_BW.png)
 
 (**2**) Once the download completes, copy the `Run RPCh` command and paste it into your terminal. 
 
