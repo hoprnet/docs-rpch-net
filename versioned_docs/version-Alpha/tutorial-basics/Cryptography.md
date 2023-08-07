@@ -250,12 +250,9 @@ The case is mitigated more easily when timestamps are being used as counters. In
 
 #### Other edge cases 
 
-TBD
-
 * HOPR Exit node public key compromise & revocation
 * Counter overflow (pretty hard to achieve if |C| = |C<sub>resp</sub>| = |C<sub>req</sub>| = 8)
 * When the return path is added to the HOPR protocol, response construction must be adjusted because the exit node might no longer know the Entry node’s peer ID.
-* …
 
 ## Instantiation
 
