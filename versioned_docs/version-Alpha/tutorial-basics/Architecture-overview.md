@@ -54,3 +54,5 @@ You can read up on how each component works and why they are needed in the follo
 - [RPCh SDK](./RPCh-SDK.md)
 - [Discovery Platform](./Discovery-platform.md)
 - [Funding Service](./Discovery-platform.md#funding-service)
+
+And you can find a complete breakdown of the cryptography used by RPCh [here.](./Cryptography.md)
