@@ -9,10 +9,11 @@ sidebar_position: 4
 RPCh SDK is a library used by a client who wants to access the RPCh network.
 Through the SDK, the client should be able to send traffic through the RPCh network and maintain a reliability metric of used HOPR entry nodes.
 
-## How to use SDK
+## How to Use
+
 You must have Node.js and npm/yarn installed on your computer. You can download them from their official website or use a package manager like Homebrew (for Mac) or Chocolatey (for Windows).
 
-### Install necessary packages
+### Install Necessary Packages
 
 ```
 yarn add @rpch/crypto @rpch/sdk
@@ -92,7 +93,7 @@ await sdk.stop();
 ```
 This will stop any necessary intervals and clear up any remaining processes.
 
-### Enable debugging logs
+### Enable Debugging Logs
 
 Depending on which platform you are running the SDK, you need to enable debugging in different ways.
 We use the library [debug](https://github.com/debug-js/debug) for our logging.
@@ -138,7 +139,7 @@ The script shows five steps which are instructional for any integration.
 
 **Note:** Parts 2 & 3 of the instructions below use a slightly altered version of the script as the original script does not define `localStorage`. This creates the issue of only one request being able to be processed, which is solved in the altered instructions below using a custom async key-value store.
 
-#### (1) Import required modules:
+#### (1) Import Required Modules:
 
 - RPChCrypto: Import the necessary cryptographic functions from your chosen version of RPCh Crypto (here: "@rpch/crypto") package.
 - SDK: Import the main class for interacting with the RPCh platform from the "@rpch/sdk" package.
@@ -148,7 +149,7 @@ const RPChCrypto = require("@rpch/crypto");
 const SDK = require("@rpch/sdk").default;
 ```
 
-#### (2) Create a custom async key-value store:
+#### (2) Create Custom Async Key-Value Store:
 
 The createAsyncKeyValStore function creates an async key-value store using a JS Map. It returns an object with two methods. These two functions will be used by the SDK to manage its internal state:
 
@@ -173,7 +174,7 @@ function createAsyncKeyValStore() {
 const store = createAsyncKeyValStore();
 ```
 
-#### (3) Initialize the RPCh SDK:
+#### (3) Initialize RPCh SDK:
 
 Create a new instance of the SDK with the necessary parameters and storage functions.
 
@@ -191,7 +192,7 @@ const sdk = new SDK(
 );
 ```
 
-#### (4) Start & Stop the SDK Before & After Using it:
+#### (4) Start & Stop the SDK Before & After Usage:
 
 - Start the SDK with `await sdk.start()`
 - Stop the SDK with `await sdk.stop()`

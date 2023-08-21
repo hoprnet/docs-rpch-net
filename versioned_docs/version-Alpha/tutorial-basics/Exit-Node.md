@@ -31,7 +31,7 @@ The exit node does the following:
 
 Both entry and exit nodes are rewarded for their service through the discovery platform. But exit nodes are given a larger reward per transaction processed due to the additional functionality they perform. The exact details of this will be documented upon the launch of RPCh Beta, as the discovery platform is currently only limited to nodes controlled by the HOPR association. 
 
-### Running an exit node
+### Running an Exit Node
 
 For RPCh Alpha, only nodes controlled by the HOPR association will be used as entry and exit nodes. This will change with RPCh Beta, where any HOPR node can join the discovery platform and be used as an entry or exit node. The exit node repository will also be updated with a pre-configured docker-compose file that can run HOPRd, RPCh exit node, and Kevlar prover functionalities through a single command.
 

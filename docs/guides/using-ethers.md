@@ -2,16 +2,17 @@
 sidebar_position: 2
 ---
 
-# RPCh ethers adapter
+# RPCh Ethers Adapter
 
 ## Description
 
 The RPCh ethers adaptor is an extension of the original `JsonRpcProvider`, which allows clients to use drop-in and replace so that they can send their RPC requests through the RPCh network.
 
-## How to use RPCh ethers adaptor
+## How to Use RPCh ethers adaptor
+
 You must have Node.js and npm/yarn installed on your computer. You can download them from their official website or use a package manager like Homebrew (for Mac) or Chocolatey (for Windows).
 
-### Install necessary packages
+### Install Necessary Packages
 
 ```
 yarn add @rpch/crypto @rpch/ethers
@@ -25,7 +26,7 @@ curl --request GET \
 
 or go to https://access.rpch.net/ and follow the docker guide
 
-### Using the adapter
+### Using the Adapter
 
 You can create an instance of this adaptor by passing in the required options and key-value store functions:
 ```TypeScript

@@ -18,7 +18,7 @@ A great tool that highlights this is [DERP,](https://derp.hoprnet.org/) which pr
 
 ![DERP](/img/DERP.png)
 
-### Who has access to this information? 
+### Who Has Access to This Information? 
 
 Whichever node processes the request will obviously be able to see it, and if every wallet had their own dedicated infrastructure to process these requests, it would be bad enough that they can now collect as much information as they want about their users.
 
@@ -26,7 +26,7 @@ But it's actually much worse. Most services can't build and maintain that level 
 
 We're talking about the few titans of industry that process billions of calls daily, and have unlimited access to everything practically any crypto user does on web3. A problem that's even worse than the privacy nightmare of web 2.0.
 
-### Why is it so hard to resolve?
+### Why Is It So Hard To Resolve?
 
 A lot of these issues stem from how the internet always was and still is. For two devices to communicate, or for you to interact with a website, it needs to know where to send data to and vice versa. This point-to-point data exchange is fundamental to the internet, and the data it requires is why privacy issues have never been resolved in web 2.0, regardless of how many new encryption technologies enter the market. 
 
@@ -34,11 +34,11 @@ The fundamental issue is with the data exposed on the transport layer as it move
 
 And that's the state of the current internet, but with web3, not only did we import these issues, we made them worse.
 
-## The solution
+## The Solution
 
 RPCh utilizes the HOPR mixnet to route, encrypt and completely obscure all user data from wallets making requests to the chain. It is a privacy-preserving RPC service that detaches the sender's identity from all communications with the blockchain.
 
-### HOPR mixnet
+### HOPR Mixnet
 
 A solution to this needs transport-layer privacy, which is exactly what RPCh provides. It is the first commercial service developed on the HOPR privacy mixnet. Mixnets are the most academically sound transport layer privacy mechanism. They are a concept that predates the internet but has only been attempted in industrial development a handful of times, mainly in the last decade with the rise of web3.
 

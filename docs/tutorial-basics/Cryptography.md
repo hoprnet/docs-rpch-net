@@ -23,7 +23,7 @@ There are the following parties in the current RPCh infrastructure:
 
 The wallet software uses RPCh client API to format the signed transaction as a message that’s accepted by the RPCh Exit node. It queries the Discovery Platform (public service) for available HOPR Exit nodes, offering the RPCh Exit node functionality. It also queries the Discovery Platform for available HOPR Entry nodes. RPCh API then sends the formatted message via the HOPR entry node over the HOPR network (where HOPR intermediate nodes act as relays) to the HOPR Exit node. Upon reception by the HOPR exit node, the data is handed over to the RPCh Exit node, which reformats the data and sends the transaction to the final RPC provider. The message sent to the HOPR Entry node is not encrypted or authenticated. The Discovery Platform is implemented using an on-chain smart contract, and the data it stores are immutable.
 
-## Threat model
+## Threat Model
 
 * The User **trusts** the wallet. The user wants to hide the _information_ contained in the transaction from all untrusted nodes in the RPCh infrastructure.
 * The Discovery Platform is a third-party **trusted** by the user. The _information_ is never reaching it in any form.
@@ -70,7 +70,7 @@ The current version byte is denoted as Ver (|Ver| = 1), and its value is 0x11. T
 
 For concrete examples of instantiations of the above cryptographic primitives so that the security requirements are fulfilled, see the instantiation section below.
 
-### Initial stage
+### Initial Stage
 
 * Each RPCh Exit Node N generates an elliptic curve keypair, such that:
 
@@ -84,7 +84,7 @@ And stores the P<sub>n</sub> in the Discovery Platform, so it is undeniably link
 * We assume that the RPCh Exit node knows the Peer ID of the RPCh Entry node (embedded in the message)—this is due to the current state of the HOPR protocol missing the privacy-preserving return path implementation.
 * Note that this version of the protocol assumes that the RPCh Exit node can identify individual RPCh Client nodes so that it can maintain the individual counters C<sub>last_req</sub> and C<sub>resp</sub> per each RPCh client. If that is not possible, UTC timestamps can be used instead of the counters (discussed in further chapters). The Exit node then maintains C<sub>last_req</sub> and C<sub>resp</sub> (UTC timestamp) per HOPR Entry node.
 
-### Request construction stage
+### Request Construction Stage
 
 This stage is executed on a wallet software system with the RPCh client. 
 
@@ -125,7 +125,7 @@ Req = Ver || W || Creq || R || T
 * RPCh client sends Req using the HOPR Entry node. Via the HOPR protocol, it gets delivered to the destination RPCh Exit node.
 * Note that with the assumed security parameters of the used primitives, the size of the request Req is 58 (|Ver| = 1, |W| = 33, |C<sub>req</sub>| = 8, |T| = 16) plus the size of the ciphertext R. If the underlying symmetric cipher does not require input message padding, the size of Req will be exactly equal 58 + |M|.
 
-### Request reception stage
+### Request Reception Stage
 
 The following stage is executed on the RPCh Exit node after delivery of the RPCh message Req. Since the HOPR protocol at its current state includes the Peer ID of the HOPR Entry node (sender) into the message (missing return path implementation), we assume the RPCh Exit node knows the Peer ID ID<sub>entry</sub>.
 
@@ -156,7 +156,7 @@ IVM = IV1 || Creq
 2. The RPCh Exit node retrieves from its persistent storage the last seen value of the counter C<sub>req_last</sub> for the sender with ID<sub>entry</sub>. If C<sub>req</sub> &lt;= C<sub>req_last</sub>, the message is discarded (replay attack protection).
 * If the message has not been discarded, the RPCh Exit node stores the new value of C<sub>req</sub> by replacing the C<sub>req_last</sub>. Then it proceeds with processing the message M as usual, eventually forwarding it to the final RPC provider.
 
-### Response construction phase
+### Response Construction Phase
 
 After the RPCh receives the result U of the transaction sent to the final RPC provider, it begins constructing the response, which it sends back to the RPC Client (via the HOPR network).
 
@@ -185,7 +185,7 @@ Resp = Cresp || R2 || T2
 
 * The size of Resp is 24 + |C<sub>resp</sub>|. Note that W in the response was omitted since the entire session state between RPCh client and RPC Exit node is kept and not discarded. This could save 33 bytes in the payload (which could be used by R<sub>2</sub>), and it is safe to use since we already need to trust the RPC Exit node. Another 1 byte is saved because the version is omitted (assumed constant per session).
 
-### Response reception phase
+### Response Reception Phase
 
 This is the last phase executed on the RPCh client upon receiving the response Resp.
 
@@ -209,7 +209,7 @@ IVU = IV2 || Cresp
 4. The RPCh client retrieves from its persistent storage the last seen value of the counter C<sub>resp_last</sub> for the sender with ID<sub>exit</sub>. If C<sub>resp</sub> &lt;= C<sub>resp_last</sub>, the message is discarded (replay attack protection).
 * If the message has not been discarded, the RPCh client stores the new value of C<sub>resp</sub> by replacing the C<sub>resp_last</sub>. Then it proceeds with processing the message U as usual, eventually forwarding it to the wallet.
 
-### Use of UTC timestamps as Counters
+### Use of UTC Timestamps as Counters
 
 In general, if time is assumed to be reasonably synchronized and monotonic across Exit and client nodes, the usage of UTC timestamp (with millisecond precision) is possible to be used instead of C<sub>req</sub> and C<sub>resp</sub>.
 
@@ -220,13 +220,13 @@ The following steps are then different:
 * In the response construction phase, the RPCh Exit node uses the current UTC timestamp as C<sub>resp</sub> instead of an incremented value C<sub>last_resp</sub> (it would have retrieved from its persistent storage).
 * In the response reception phase, the RPCh client node verifies that the received C<sub>resp</sub> is strictly greater than the C<sub>last_resp </sub>it has stored and also verifies that the received C<sub>resp</sub> is not in the future compared to its current UTC time (within some reasonable tolerance).
 
-### Edge cases
+### Edge Cases
 
-#### Loss of the counter
+#### Loss of the Counter
 
 There are situations where the stored counter values C<sub>last_req</sub> and C<sub>last_resp</sub> can be lost. This is more likely to happen on the RPCh client node rather than the RPCh Exit node.
 
-#### Loss on RPCh Exit node
+#### Loss on RPCh Exit Node
 
 The loss of the C<sub>last_req</sub> on the RPCh Exit node has greater security implications since a malicious Entry node could easily take past messages it has seen and replay that to the RPCh Exit node.
 
@@ -236,7 +236,7 @@ When non-timestamp based counters are being used, the security against a replay 
 
 The loss of C<sub>last_resp</sub> has fewer security implications because, from the RPCh client perspective, the request and response are tied together via the unique EC keypair generated during the request construction phase. Therefore, the response freshness guarantees are far stronger for the RPCh client. In case of loss, the RPCh Exit node can set C<sub>last_resp</sub> to an arbitrarily high value it “knows” (out of band) it has not used before. The selection of such value is left for the implementer to decide.
 
-#### Loss on RPCh Client node
+#### Loss on RPCh Client Node
 
 Since the received responses are tied to the requests by a unique EC keypair (generated during the request construction phase), and a session is established per request/response roundtrip, the RPCh client has guaranteed that the received response belongs to the request it sent earlier.
 
@@ -248,7 +248,7 @@ Because of the above-mentioned request/response tieing guarantees, the lost valu
 
 The case is mitigated more easily when timestamps are being used as counters. In case of loss, the C<sub>last_req</sub> and C<sub>last_resp</sub> will be set to the current UTC timestamp value.
 
-#### Other edge cases 
+#### Other Edge Cases 
 
 * HOPR Exit node public key compromise & revocation
 * Counter overflow (pretty hard to achieve if |C| = |C<sub>resp</sub>| = |C<sub>req</sub>| = 8)

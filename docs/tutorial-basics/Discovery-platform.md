@@ -28,7 +28,7 @@ RPCh Alpha will only be using nodes controlled by the HOPR association. This fun
 
 Upon the release of RPCh Beta, HOPR node runners can use a newly exposed API to register their nodes on the platform. This will be documented and updated [here.](../tutorial-extras/Running-an-RPCh-node.md)
 
-### Funding service 
+### Funding Service 
 
 The RPCh funding service acts as a standalone service whose purpose is solely to send funds to nodes. It is only accessible via our VPC and is not exposed publicly.
 

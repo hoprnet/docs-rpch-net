@@ -24,7 +24,7 @@ For responses that the SDK receives, it performs a similar function in reverse, 
 
 ![SDK graphic](/img/SDK_graphic.png)
 
-### Interacting with the discovery platform
+### Interacting With the Discovery Platform
 
 The SDK also has to interact with the discovery platform to choose suitable entry & exit nodes for each individual request. This interaction is mainly limited to asking the discovery platform for nodes with a high-reliability score and, at the end of the relay, updating the reliability score of each node used.
 

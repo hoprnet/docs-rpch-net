@@ -17,7 +17,7 @@ There are two approaches to this.
 
 **Note:** There is no WebSocket support currently, for either option.
 
-### Using An Existing RPCh Adapter
+### Using an Existing RPCh Adapter
 
 There are currently two RPCh adapters available for intergration:
 
@@ -34,7 +34,7 @@ The integration process and an example integration can be found here:
 
 **Note:** Currently, there is only these two adapters. If this option is unavailable, you must use the RPCh SDK directly.
 
-### Using The RPCh SDK
+### Using the RPCh SDK
 
 Using the RPCh SDK directly will require you to create a more custom integration depending on how the wallet makes its RPC requests. 
 You can read up on how to use the SDK and view integration examples [here.](./using-the-sdk.md)

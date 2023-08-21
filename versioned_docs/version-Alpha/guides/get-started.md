@@ -10,7 +10,7 @@ This section of the documentation is dedicated to helping you integrate RPCh int
 - The [RPCh SDK](../tutorial-basics/RPCh-SDK.md)
 - [RPCh Crypto](./RPCh-crypto.md)
 
-## How to Integrate RPCh
+## How To Integrate RPCh
 Integrating RPCh into your project is as simple as overwriting the methods used to make requests to its RPC provider with custom logic which uses the RPCh SDK instead. 
 
 There are two approaches to this.

@@ -13,7 +13,7 @@ This tutorial gives an overview of how to run RPCh locally using a Docker connec
 Alternatively, download BlockWallet, which has RPCh integrated to make all Gnosis chain transactions completely private. This is an easier setup, but RPCh's functionality is limited to Gnosis Chain on the current integration of BlockWallet. You can find a guide on how to download BlockWallet [here.](INSERT LINK)
 
 -->
-## Running RPCh with the Docker connector
+## Running RPCh With the Docker Connector
 
 ### Install Docker
 
@@ -106,7 +106,7 @@ Here is a demo video of the installation process. For this:
 
 Once RPCh stops running, this network will no longer work on your wallet. To avoid having to copy/paste the commands every time you want to use your wallet, you may want to use [tmux](https://linuxize.com/post/getting-started-with-tmux/) with a VPS to run RPCh 24/7, so you can use your new custom network whenever you want. 
 
-## Test that it works
+## Test that It Works
 
 ### Inspect Browser Wallet
 
@@ -128,7 +128,7 @@ Check your terminal logs to make sure the server is still running fine.
 
 ![Logs](/img/Logs.png)
 
-### Configuring logs
+### Configuring Logs
 
 You can configure your logs to reduce spam by editing the docker command you are running. After the `Debug` tag you can list paths you do not want to see, e.g. add `-rpch:somepath`. By default, the original command provided to you does not show logs for RPCh metrics. Note: `DEBUG="rpch*, -*metrics"`, this asks it to print all RPCh logs except the metrics.
 
