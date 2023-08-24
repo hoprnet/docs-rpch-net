@@ -51,4 +51,3 @@ Additional features:
 
 - Each request has a unique relay making it more dynamic than changing your VPN ten times a second
 - Packet mixing and background noise obscure traffic movement from global network observers
-- Light client verification to protect against data tampering
