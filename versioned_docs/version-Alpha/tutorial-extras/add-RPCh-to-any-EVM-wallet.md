@@ -43,7 +43,7 @@ You can now use this network to visit any web3 service of your choice while main
 
 ## Adding the RPCh Network Manually (Any EVM Chain)
 
-The [above example](./using-RPCh-paid-version.md#adding-the-rpch-network-manually-gnosis) was for Gnosis chain but you can use the same setup to manually add RPCh for any EVM chain by just adjusting the `New RPC Url` and `Chain ID`.
+The [above example](./add-RPCh-to-any-EVM-wallet.md#adding-the-rpch-network-manually-gnosis) was for Gnosis chain but you can use the same setup to manually add RPCh for any EVM chain by just adjusting the `New RPC Url` and `Chain ID`.
 
 For example to use RPCh with the Binance Smart Chain, I would need its Chain ID: `56` and an RPC exit provider such as: `https://bsc-dataseed4.binance.org`. You can find providers and chain information for your desired chain using [chainlist](https://chainlist.org/). 
 
