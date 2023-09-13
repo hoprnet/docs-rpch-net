@@ -93,11 +93,11 @@ Adding your network manually also allows the added beneifit of choosing your own
 (**2**) Click on the `Networks` tab on the left and in the field that appears add the following information:
 
 - **Network Name:** RPCh - Gnosis Chain
-- **New RPC Url:** http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net
+- **New RPC Url:** http://localhost:45750/?provider=https://primary.gnosis-chain.rpc.hoprtech.net
 - **Chain ID:** 100
 - **Currency Symbol:** xDAI
 
-**Note:** If you are using a VPS to run RPCh, replace `localhost` with your VPS IP address for your RPC URL, for example: `http://142.93.5.175:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net` would be my RPC URL if my VPS had the IP address: `142.93.5.175`.
+**Note:** If you are using a VPS to run RPCh, replace `localhost` with your VPS IP address for your RPC URL, for example: `http://142.93.5.175:45750/?provider=https://primary.gnosis-chain.rpc.hoprtech.net` would be my RPC URL if my VPS had the IP address: `142.93.5.175`.
 
 ![RPCh new RPC](/img/RPCh-new-RPC.png)
 
@@ -114,11 +114,11 @@ For example to use RPCh with the Binance Smart Chain, I would need its Chain ID:
 New RPC URL (Binance Smart Chain):
 
 ```
-http://localhost:8080/?exit-provider=https://bsc-dataseed4.binance.org
+http://localhost:45750/?provider=https://bsc-dataseed4.binance.org
 ```
 
 Example using new provider and chain ID (Binance Smart Chain):
 
-![RPCh Binance](/img/RPCh_over_Binance1.png)
+![RPCh Binance](/img/RPCh-over-binance-new-port.png)
 
 
