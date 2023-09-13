@@ -57,7 +57,7 @@ Now you can add RPCh to your wallet by following the instructions [here](/versio
 
 ## (Optional) Choose Custom MEV Provider
 
-By default, RPCh comes with MEV protection enabled via [PropellerHeads](https://docs.propellerheads.xyz/propellerheads-docs/introduction/overview). This allows you to earn revenue kickbacks based on the amount of revenue generated through propellerheads' MEV [protection solutions](https://docs.propellerheads.xyz/propellerheads-docs/introduction/overview#best-prices-and-full-mev-protection), but you can choose your own MEV protection service by editing the Docker command you acquire through the dashboard.
+By default, RPCh comes with MEV protection enabled via [PropellerHeads](https://docs.propellerheads.xyz/propellerheads-docs/introduction/overview). This allows you to earn revenue kickbacks based on the amount of revenue generated through propellerheads' MEV [protection solutions](https://docs.propellerheads.xyz/propellerheads-docs/introduction/overview#best-prices-and-full-mev-protection), but if you don't want to use PropellerHeads, you can choose your own MEV protection service by editing the Docker command you acquire through the dashboard.
 
 To add your own MEV provider:
 
