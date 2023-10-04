@@ -52,7 +52,7 @@ That's all! As long as your command is running, you can use the RPCh network to 
 
 **Bonus Tip:** To run this Docker command in the background, it may be useful to use [tmux](https://linuxize.com/post/getting-started-with-tmux/). This will let you run the command in a background session and avoid having to re-run the command every time you turn on your device. 
 
-Now you can add RPCh to your wallet by following the instructions [here](/versioned_docs/version-Alpha/tutorial-extras/add-RPCh-to-any-EVM-wallet.md#add-rpch-to-your-evm-wallet-on-any-evm-chain).
+Now you can add RPCh to your wallet by following the instructions [here](/versioned_docs/version-Beta/tutorial-extras/add-RPCh-to-any-EVM-wallet.md#add-rpch-to-your-evm-wallet-on-any-evm-chain).
 
 
 ## (Optional) Choose Custom MEV Provider
