@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Running an RPCh Node
 
-All HOPR node runners will be able to run an RPCh node with the release of RPCh Beta. Currently, only nodes controlled by the HOPR association are used as entry/exit nodes for RPCh relays.
+All HOPR node runners will be able to run an RPCh node with the release soon. Currently, only nodes controlled by the HOPR association are used as entry/exit nodes for RPCh relays.
 
 ## What Do Entry/Exit Nodes Do?
 
@@ -16,10 +16,10 @@ This is mainly in relation to exit nodes, which must process, re-route and encry
 
 To run an RPCh node, first, you must be running a HOPR node. You can find the details for this [here.](https://docs.hoprnet.org/node/start-here) 
 
-On the next release: RPCh Beta, an API will be exposed for HOPR nodes to register as entry/exit nodes on the discovery platform. This page will be updated with instructions for this once the eature becomes available.
+Soon, an API will be exposed for HOPR nodes to register as entry/exit nodes on the discovery platform. This page will be updated with instructions for this once the eature becomes available.
 
 ## Incentives for RPCh Node Runners
 
 Entry/exit nodes must use the HOPR network to send data to each other, which costs HOPR tokens. So they are pre-funded with tokens for each relay and given an extra amount as an incentive to operate as an RPCh node. 
 
-This mechanism will only be available to non-HOPR-controlled nodes upon the release of RPCh Beta and, as such, details will be updated with the next release.  
+This mechanism will only be available to non-HOPR-controlled nodes at some point within the coming weeks, as such, details will be updated after this transition has been made.  
