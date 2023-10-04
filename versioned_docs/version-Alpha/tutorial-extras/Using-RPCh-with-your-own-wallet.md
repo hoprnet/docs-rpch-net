@@ -71,7 +71,7 @@ http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.n
 
 Here is an example of adding this to MetaMask for the `Gnosis chain` with chain ID: `100`. This is the default chain for the provided URL: `http://localhost:8080/?exit-provider=https://primary.gnosis-chain.rpc.hoprtech.net`.
 
-If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1` along with a new provider to instead of the default: `https://primary.gnosis-chain.rpc.hoprtech.net`. See example [here.](./Using-RPCh-with-your-own-wallet.md#example-use-any-evm-chain)
+If you want to use RPCh with a different chain, e.g. `Ethereum Mainnet`, use the corresponding chain ID: `1` along with a new provider to instead of the default: `https://primary.gnosis-chain.rpc.hoprtech.net`. 
 
 ![MetaMask Example](/img/MetaMask_example2.png)
 
