@@ -84,7 +84,7 @@ Example using new provider and chain ID (Binance Smart Chain):
 
 ![RPCh Binance](/img/RPCh-over-binance-new-port.png)
 
-## Adding RPch to Popular Wallets
+## Adding RPCh to Popular Wallets
 
 Here are the basic outlines for adding RPCh to a few of the most common wallets:
 
