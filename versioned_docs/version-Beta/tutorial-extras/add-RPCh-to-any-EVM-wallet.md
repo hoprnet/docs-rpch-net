@@ -15,9 +15,9 @@ By adding it manually you can choose to run it on any EVM chain of your choice. 
 
 (**1**) Navigate back to the dashboard where you found your unique Docker command. If you closed your browser you may have to log in again.
 
-![dashboard](/img/dashboard-chain.png)
+![dashboard](/img/Dashboard-chian-2.png)
 
-(**2**) Then, Press either the button titled `Gnosis Chain Over RPCh` or `Ethereum Mainnet Over RPCh` depending on what chain you want to use.
+(**2**) Then, Press either the button titled `Gnosis Chain Over RPCh`, `Ethereum Mainnet Over RPCh` or `Polygon zkEVM Over RPCh` depending on what chain you want to use.
 
 (**3**) Finally, approve your wallet's request when prompted.
 

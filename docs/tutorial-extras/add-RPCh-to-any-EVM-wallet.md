@@ -15,42 +15,13 @@ By adding it manually you can choose to run it on any EVM chain of your choice. 
 
 (**1**) Navigate back to the dashboard where you found your unique Docker command. If you closed your browser you may have to log in again.
 
-![dashboard](/img/dashboard-chain.png)
+![dashboard](/img/Dashboard-chian-2.png)
 
-(**2**) Then, Press either the button titled `Gnosis Chain Over RPCh` or `Ethereum Mainnet Over RPCh` depending on what chain you want to use.
+(**2**) Then, Press either the button titled `Gnosis Chain Over RPCh`, `Ethereum Mainnet Over RPCh` or `Polygon zkEVM Over RPCh` depending on what chain you want to use.
 
 (**3**) Finally, approve your wallet's request when prompted.
 
 That's all! You should now have a new RPCh Network you can use to privately interact with web3.
-
-You can see information on our three dedicated RPC endpoints below:
-
-<Tabs>
-<TabItem value="Ethereum" label="Ethereum">
-
-- Network Name: `RPCh - Mainnet`
-- New RPC Url: `http://localhost:45750/?provider=https://ethereum-provider.rpch.tech`
-- Chain ID: `1`
-- Currency Symbol: `ETH`
-
-</TabItem>
-<TabItem value="Gnosis Chain" label="Gnosis Chain">
-
-- Network Name: `RPCh - Gnosis Chain`
-- New RPC Url: `http://localhost:45750/?provider=https://primary.gnosis-chain.rpc.hoprtech.net`
-- Chain ID: `100`
-- Currency Symbol: `xDAI`
-
-</TabItem>
-<TabItem value="Polygon zkEVM" label="Polygon zkEVM">
-
-- Network Name: `RPCh - Polygon zkEVM`
-- New RPC Url: `http://localhost:45750/?provider=https://polygon-provider.rpch.tech`
-- Chain ID: `1101`
-- Currency Symbol: `MATIC`
-
-</TabItem>
-</Tabs>
 
 ## Adding the RPCh Network Manually (RPCh Endpoints)
 
@@ -112,6 +83,8 @@ http://localhost:45750/?provider=https://bsc-dataseed4.binance.org
 Example using new provider and chain ID (Binance Smart Chain):
 
 ![RPCh Binance](/img/RPCh-over-binance-new-port.png)
+
+## Adding RPCh to Popular Wallets
 
 Here are the basic outlines for adding RPCh to a few of the most common wallets:
 
