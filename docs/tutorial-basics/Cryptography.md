@@ -174,7 +174,7 @@ IVU = IV2 || Cresp
 * Then it proceeds with encrypting the response message U to produce a ciphertext R<sub>2</sub> and authentication tag T<sub>2</sub>.
 
 ```
-(R2, T2) = ENCKU(IV2 , U)
+(R2, T2) = ENCKU(IVU , U)
 ```
 
 * Lastly, the RPCh client formats the final request message Resp which is then delivered to the HOPR Entry node and subsequently to the RPCh client. 
@@ -258,7 +258,7 @@ The case is mitigated more easily when timestamps are being used as counters. In
 
 Here is a concrete and recommended instantiation of the cryptographic primitives:
 
-* Ver = 0x11
+* Ver = 0x12
 * ENC, DEC is Chacha20 with Poly1305. It accepts the key size of 256 bits, and the IV size is 96 bits. It preserves the size of the plaintext/ciphertext.
 * ECDH is currently based on secp256k1 due to easier compatibility with the Smart Contracts. However, we would ideally want to use X25519, a concrete Elliptic curve Diffie-Hellman instantiation over Curve25519 with the prime field of size 2<sup>255</sup> - 19. 
 * COMP and GEN are based on Curve25519.
