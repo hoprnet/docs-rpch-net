@@ -16,15 +16,10 @@ You must have Node.js and npm/yarn installed on your computer. You can download 
 ### Install Necessary Packages
 
 ```
-yarn add @rpch/crypto @rpch/sdk
+yarn add @rpch/sdk
 ```
 
-Get your rpch client by running
-```
-curl --request GET \
-  --url https://staging.discovery.rpch.tech/api/v1/request/trial
-```
-or go to https://access.rpch.net/ and follow the docker guide
+Get your rpch client by visiting [degen.rpch.net](https://degen.rpch.net/) and [set up your client](../tutorial-extras/sign-up-for-rpch.md).
 
 ### Using the SDK
 
@@ -103,6 +98,8 @@ We use the library [debug](https://github.com/debug-js/debug) for our logging.
   - localStorage: update `localStorage` with keyval `debug:rpch*`
   - programmatic: access the SDK object and enable logging with `sdk.debug.enable("rpch*")`
 
+<!---
+
 ## Example Integrations
 
 Using the SDK directly will not have an as standardized approach as using an RPCh adapter such as our [ethers adapter.](./using-ethers.md) Instead, it will require a little more effort to understand the project's codebase, where it is interacting with its provider and what methods to overwrite. 
@@ -119,7 +116,7 @@ You can see a prominent amendment made [here.](https://github.com/Rpc-h/extensio
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Frame](https://github.com/Rpc-h/extension-frame) | [Amendment 1](https://github.com/Rpc-h/extension-frame/blob/add-rpch-provider/main/chains/index.js#L181) |
 
---->
+
 
 ### RPC Server
 
@@ -257,3 +254,5 @@ The above method does the following:
 
 The remaining few lines of [the script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs) just call the method and handle its response.
 This script serves as a learning resource to help you understand how to use the RPCh SDK. When incorporating RPCh into your own projects, you'll need to follow similar steps for setting up and initializing the SDK. Then, you should replace the default provider interactions with your own custom interactions that utilize the SDK, as demonstrated in this [example script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs). 
+
+--->
