@@ -66,7 +66,7 @@ const config = {
 
   scripts: [
     {
-      src: 'https://cdn.usefathom.com/script.js',
+      src: 'https://cdn-eu.usefathom.com/script.js',
       'data-site': 'YKGELYNY',
       defer: true,
       'data-included-domains': 'docs.rpch.net',
