@@ -1,223 +1,107 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
-# RPCh SDK
+# RPCh Vanilla SDK Example Integration
 
 ## Description
 
-RPCh SDK is a library used by a client who wants to access the RPCh network.
-Through the SDK, the client should be able to send traffic through the RPCh network and maintain a reliability metric of used HOPR entry nodes.
+This guide provides instructions on how to integrate and use the RPCh SDK in a Node.js environment without any additional blockchain libraries such as ethers.js, web3.js, or the wagmi library. 
 
-## How to Use
+## Example Integration
 
-You must have Node.js and npm/yarn installed on your computer. You can download them from their official website or use a package manager like Homebrew (for Mac) or Chocolatey (for Windows).
+You can find this example on our GitHub repository [here](https://github.com/Rpc-h/RPCh/blob/main/examples/vanilla-sdk/src/index.ts).
 
-### Install Necessary Packages
+```JavaScript
+import SDK from '@rpch/sdk';
+import dotenv from 'dotenv';
+dotenv.config();
 
-```
-yarn add @rpch/sdk
-```
+/**
+ * Example of how to use RPCh SDK
+ */
+async function example() {
+    // Your client secret from the RPCh dashboard
+    const sdk = new SDK(process.env.CLIENT_SECRET);
 
-Get your rpch client by visiting [degen.rpch.net](https://degen.rpch.net/) and [set up your client](../tutorial-extras/sign-up-for-rpch.md).
+    const response = await sdk.send(
+        {
+            method: 'eth_blockNumber',
+            params: [],
+            jsonrpc: '2.0',
+        },
+        {
+            provider: 'https://ethereum-provider.rpch.tech',
+        },
+    );
 
-### Using the SDK
+    const responseJSON = await response.json();
 
-You can create an instance of the SDK by passing in the required options and key-value store functions:
-
-```TypeScript
-import SDK from "@rpch/sdk";
-const sdk = new SDK(<your-client-secret>)
-```
-
-Now you can start sending request similar to using fetch:
-
-```TypeScript
-const rpcReq = {
-    jsonrpc: "2.0",
-    method: "eth_chainId",
-    id: "test1",
-    params: [],
-};
-const resp = await sdk.send(rpcReq);
-console.log(resp);
-```
-
-This will send the request through the HOPR network and return the response. If there is an error, it will be thrown.
-
-In case you want to use a different EVM chain or a different RPC provider, just specify it in the options:
-
-```TypeScript
-sdk.send(rpcReq, {
-    provider: 'https://ethereum-provider.rpch.tech'
-});
-```
-
-### Enable Debugging Logs
-
-Depending on which platform you are running the SDK, you need to enable debugging in different ways.
-We use the library [debug](https://github.com/debug-js/debug) for our logging.
-
-- on nodejs: you need to run the instance with the following environment variable `DEBUG="rpch*" ..`
-- on web platforms:
-  - localStorage: update `localStorage` with keyval `debug:rpch*`
-  - programmatic: access the SDK object and enable logging with `sdk.debug.enable("rpch*")`
-
-<!---
-
-## Example Integrations
-
-Using the SDK directly will not have an as standardized approach as using an RPCh adapter such as our [ethers adapter.](./using-ethers.md) Instead, it will require a little more effort to understand the project's codebase, where it is interacting with its provider and what methods to overwrite. 
-
-<!--- Looking at other examples of such integrations will be useful, even if they cannot be copied one-to-one. The below documentation will be updated with the Frame Wallet integration soon.
-
-### Frame
-
-Frame is a crypto wallet, and the following example is an integration of RPCh into its browser extension. The integrated repository can be found [here.](https://github.com/Rpc-h/extension-frame)
-
-You can see a prominent amendment made [here.](https://github.com/Rpc-h/extension-frame/blob/add-rpch-provider/main/chains/index.js#L181)
-
-| repository       | example                                                                                                                                                                                                                   |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Frame](https://github.com/Rpc-h/extension-frame) | [Amendment 1](https://github.com/Rpc-h/extension-frame/blob/add-rpch-provider/main/chains/index.js#L181) |
-
-
-
-### RPC Server
-
-You can see how the SDK was used similarly within the RPC server [here.](https://github.com/Rpc-h/RPCh/blob/f1bc164a9671f9e1ce6c7b204a47def4c5a16179/apps/rpc-server/src/index.ts#L55)
-
-| environment       | example                                                                                                                                                                                                                   |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| node.js           | [repo](https://github.com/Rpc-h/RPCh/tree/main/apps/rpc-server), [Example 1](https://github.com/Rpc-h/RPCh/blob/f1bc164a9671f9e1ce6c7b204a47def4c5a16179/apps/rpc-server/src/index.ts#L55)                                        |
-
-### Simple Use Case
-
-The following script is a straightforward example demonstrating how to use the RPCh SDK to request the details of the latest block from the Ethereum blockchain. This is not a full integration example, but it serves as a guide for understanding the SDK's usage.
-
-You can view the simple script [here.](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs)
-
-The script shows five steps which are instructional for any integration.
-
-**Note:** Parts 2 & 3 of the instructions below use a slightly altered version of the script as the original script does not define `localStorage`. This creates the issue of only one request being able to be processed, which is solved in the altered instructions below using a custom async key-value store.
-
-#### (1) Import Required Modules:
-
-- RPChCrypto: Import the necessary cryptographic functions from your chosen version of RPCh Crypto (here: "@rpch/crypto") package.
-- SDK: Import the main class for interacting with the RPCh platform from the "@rpch/sdk" package.
-
-```TypeScript
-const RPChCrypto = require("@rpch/crypto");
-const SDK = require("@rpch/sdk").default;
-```
-
-#### (2) Create Custom Async Key-Value Store:
-
-The createAsyncKeyValStore function creates an async key-value store using a JS Map. It returns an object with two methods. These two functions will be used by the SDK to manage its internal state:
-
-- `set`: Asynchronously store a key-value pair.
-- `get`: Asynchronously retrieve the value associated with a key.
-
-```TypeScript
-// Create a custom async key-value store
-function createAsyncKeyValStore() {
-  const store = new Map();
-
-  return {
-    async set(key, value) {
-      store.set(key, value);
-    },
-    async get(key) {
-      return store.get(key);
-    },
-  };
+    return responseJSON;
 }
 
-const store = createAsyncKeyValStore();
+async function main() {
+    try {
+        const response = await example();
+        console.log('Block Number:', response);
+    } catch (e) {
+        console.error('Error:', e);
+    }
+}
+
+main();
 ```
 
-#### (3) Initialize RPCh SDK:
+## Example Breakdown
 
-Create a new instance of the SDK with the necessary parameters and storage functions.
+### Setting up the Environment
 
-```TypeScript
-// Initialize the SDK
-const sdk = new SDK(
-  {
-    crypto: RPChCrypto,
-    client: "trial",
-    timeout: 20000,
-    discoveryPlatformApiEndpoint: "https://staging.discovery.rpch.tech",
-  },
-  store.set,
-  store.get
-);
+First, import the necessary modules and configure the environment:
+
+```JavaScript
+import SDK from '@rpch/sdk';
+import dotenv from 'dotenv';
+dotenv.config();
 ```
 
-#### (4) Start & Stop the SDK Before & After Usage:
+The dotenv module loads environment variables from a .env file into process.env, making it easy to manage configuration settings.
 
-- Start the SDK with `await sdk.start()`
-- Stop the SDK with `await sdk.stop()`
+### Creating the Example Function
 
-```TypeScript
-async function getLatestBlock() {
-  await sdk.start();
-  // ... (code from the original script)
-  await sdk.stop();
+Define an asynchronous function, example, which uses the RPCh SDK to send a JSON-RPC request:
+
+```JavaScript
+async function example() {
+    // This client secret can be found in your dashboard
+    const sdk = new SDK(process.env.CLIENT_SECRET!);
+
+    const response = await sdk.send(
+        {
+            method: 'eth_blockNumber',
+            params: [],
+            jsonrpc: '2.0',
+        },
+        {
+            provider: 'https://ethereum-provider.rpch.tech',
+        },
+    );
+
+    const responseJSON = await response.json();
+
+    return responseJSON;
 }
 ```
 
-#### (5) Correctly Use the Create & Send Request Functions:
+Within this function:
 
-Sending a request consists of 2 steps:
+- An instance of the RPCh SDK is created with the client secret.
+- The sdk.send method is used to make a JSON-RPC request, in this case to get the latest block number (eth_blockNumber).
+- A custom provider URL (https://ethereum-provider.rpch.tech) is specified, although the RPCh SDK can automatically choose a suitable provider.
 
-- Creating the request `const req = await sdk.createRequest("provider", "body");` The first argument is the provider name and the second argument is the request body.
-- Sending the previously created request `const res = await sdk.sendRequest(req);` This will send the request through the HOPR network and return the response. If there is an error, it will be thrown.
+## Using the Example
 
-You can see this used correctly within the main method of the script:
+To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/vanilla-sdk/src/index.ts): 
 
-```TypeScript
-async function getLatestBlock() {
-  await sdk.start();
+(**1**) Edit the `.env` file to include your Client secret which you can obtain from the dashboard to [degen.rpch.net](https://degen.rpch.net/)
 
-  // Create and send a request to get the latest block number
-  const blockNumberRequest = await sdk.createRequest(
-    "ethereum",
-    JSON.stringify({ jsonrpc: "2.0", id: 1, method: "eth_blockNumber", params: [] })
-  );
-  const blockNumberResponse = await sdk.sendRequest(blockNumberRequest);
-  const blockNumber = parseInt(blockNumberResponse.body.result, 16);
-
-  // Create and send a request to get the block details
-  const blockDetailsRequest = await sdk.createRequest(
-    "provider",
-    JSON.stringify({
-      jsonrpc: "2.0",
-      id: 2,
-      method: "eth_getBlockByNumber",
-      params: [blockNumber, true],
-    })
-  );
-  const blockDetailsResponse = await sdk.sendRequest(blockDetailsRequest);
-
-  await sdk.stop();
-
-  return JSON.parse(blockDetailsResponse.body.result);
-}
-```
-
-The above method does the following:
-
-- Start the SDK with `await sdk.start()`
-- Create and send a request to get the latest block number using the `eth_blockNumber` method 
-- Parse the response to obtain the block number
-- Convert the block number from hexadecimal to an integer
-- Create and send a request to get the details of the latest block by its number using the `eth_getBlockByNumber` method
-- Parse the response to obtain the block details
-- Stop the SDK with `await sdk.stop()`
-- Return the block details
-
-The remaining few lines of [the script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs) just call the method and handle its response.
-This script serves as a learning resource to help you understand how to use the RPCh SDK. When incorporating RPCh into your own projects, you'll need to follow similar steps for setting up and initializing the SDK. Then, you should replace the default provider interactions with your own custom interactions that utilize the SDK, as demonstrated in this [example script](https://github.com/0xbhagi/rpcs_prototype/blob/main/index.cjs). 
-
---->
+(**2**) Run `yarn && yarn dev`

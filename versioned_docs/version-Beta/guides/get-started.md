@@ -13,28 +13,21 @@ This section of the documentation is dedicated to helping you integrate RPCh int
 ## How to Integrate RPCh
 Integrating RPCh into your project is as simple as overwriting the methods used to make requests to its RPC provider with custom logic which uses the RPCh SDK instead. 
 
-There are two approaches to this.
+If you are using a frontend library such as [ethers](https://www.npmjs.com/package/ethers), [viem](https://github.com/wagmi-dev/viem) or [wagmi](https://github.com/wagmi-dev/wagmi) this can be quite easily done by replacing a few lines of code.
 
 **Note:** There is no WebSocket support currently, for either option.
 
-### Using an Existing RPCh Adapter
+### Examples Using a Library
 
-There are currently two RPCh adapters available for intergration:
+We currently have example integrations for the following libraries:
 
-- [RPCh ethers](./using-ethers.md) 
-- [RPCh ethereum-provider](./using-ethereum-provider.md)
+- **ethers:** view a breakbown of the example integration [here.](./using-ethers.md)
+- **viem:** view a breakbown of the example integration [here.](./using-viem.md)
+- **wagmi:** view a breakbown of the example integration [here.](./using-wagmi.md)
 
-If your project is using either [ethers](https://www.npmjs.com/package/ethers) or [ethereum-provider](https://github.com/floating/ethereum-provider), you can use the corresponding adapter. The adapters act as an abstraction that internally uses `@rpch/sdk` which you can plug n' play. 
-
-This is the easiest method of integration, allowing you to route your project's RPC requests through RPCh with only a few lines of code.
-The integration process and an example integration can be found here: 
-
-- [For ethers](./using-ethers.md)
-- [For ethereum-provider](./using-ethereum-provider.md)
-
-**Note:** Currently, there is only these two adapters. If this option is unavailable, you must use the RPCh SDK directly.
+If your project is using a different library you can still use these examples as integration or alternatively, view our [vanilla SDK example](./using-the-sdk.md) for a more barebones approach. 
 
 ### Using the RPCh SDK
 
-Using the RPCh SDK directly will require you to create a more custom integration depending on how the wallet makes its RPC requests. 
+Using the RPCh SDK directly will require you to create a more custom integration depending on how the wallet or project makes its RPC requests. 
 You can read up on how to use the SDK and view integration examples [here.](./using-the-sdk.md)
