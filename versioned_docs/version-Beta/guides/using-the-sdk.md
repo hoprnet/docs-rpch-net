@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# RPCh Vanilla SDK Example Integration
+# RPCh Vanilla JS SDK Example Integration
 
 ## Description
 
@@ -12,7 +12,7 @@ This guide provides instructions on how to integrate and use the RPCh SDK in a N
 
 You can find this example on our GitHub repository [here](https://github.com/Rpc-h/RPCh/blob/main/examples/vanilla-sdk/src/index.ts).
 
-```JavaScript
+```javascript
 import SDK from '@rpch/sdk';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -58,7 +58,7 @@ main();
 
 First, import the necessary modules and configure the environment:
 
-```JavaScript
+```javascript
 import SDK from '@rpch/sdk';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -70,7 +70,7 @@ The dotenv module loads environment variables from a .env file into process.env,
 
 Define an asynchronous function, example, which uses the RPCh SDK to send a JSON-RPC request:
 
-```JavaScript
+```javascript
 async function example() {
     // This client secret can be found in your dashboard
     const sdk = new SDK(process.env.CLIENT_SECRET!);

@@ -158,6 +158,7 @@ const config = {
       //   copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       // },
       prism: {
+        additionalLanguages: ['javascript'],
         theme: darkCodeTheme,
         // darkTheme: darkCodeTheme,
         // theme: darkCodeTheme,

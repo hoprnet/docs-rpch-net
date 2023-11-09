@@ -12,7 +12,7 @@ This is an example of integrating the RPCh SDK into a project which uses the eth
 
 You can view the entirety of the example code within our GitHub [here](https://github.com/Rpc-h/RPCh/blob/main/examples/ethers/src/index.ts).
 
-```TypeScript
+```javascript
 import SDK, { JRPC } from '@rpch/sdk';
 import { JsonRpcProvider, JsonRpcPayload, JsonRpcResult } from 'ethers';
 import dotenv from 'dotenv';
@@ -78,7 +78,7 @@ example()
 
 Start by importing the necessary modules from the @rpch/sdk, ethers, and dotenv packages:
 
-```JavaScript
+```javascript
 import SDK, { JRPC } from '@rpch/sdk';
 import { JsonRpcProvider, JsonRpcPayload, JsonRpcResult } from 'ethers';
 import dotenv from 'dotenv';
@@ -88,7 +88,7 @@ import dotenv from 'dotenv';
 
 Load the environment variables from your `.env` file where your CLIENT_SECRET is stored:
 
-```JavaScript
+```javascript
 dotenv.config();
 ```
 
@@ -96,7 +96,7 @@ dotenv.config();
 
 Define the RPChProvider class extending the JsonRpcProvider class from the ethers library. This class takes a URL and an instance of the SDK as parameters.
 
-```JavaScript
+```javascript
 export class RPChProvider extends JsonRpcProvider {
     constructor(
       public readonly url: string, 
@@ -110,7 +110,7 @@ export class RPChProvider extends JsonRpcProvider {
 
 Override the _send method to handle the sending of RPC requests. The method can take either a singular JsonRpcPayload or an array of JsonRpcPayload objects.
 
-```JavaScript
+```javascript
 async _send(payload: JsonRpcPayload | Array<JsonRpcPayload>): Promise<Array<JsonRpcResult>> {
       try {
           const payloads = Array.isArray(payload) ? payload : [payload];
@@ -154,7 +154,7 @@ The example function demonstrates how to use the RPChProvider, in this case for 
 - Send a request using the provider instance.
 - Log the result or any caught errors.
 
-```JavaScript
+```javascript
 async function example() {
     // This client secret can be found in your dashboard
     const sdk = new SDK(process.env.CLIENT_SECRET!);

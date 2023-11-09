@@ -12,7 +12,7 @@ The following documentation provides an integration example of the RPCh SDK with
 
 Find the complete example code on our GitHub [here](https://github.com/Rpc-h/RPCh/blob/main/examples/wagmi/src/App.tsx).
 
-```TypeScript
+```javascript
 import SDK from "@rpch/sdk";
 import { Chain, PublicClient, Transport, createClient, custom, publicActions } from "viem";
 import { WagmiConfig, createConfig, mainnet } from "wagmi";
@@ -63,7 +63,7 @@ export default function App() {
 ### Importing Required Modules
 Begin by importing the necessary modules from the viem and wagmi libraries, and the SDK from @rpch/sdk:
 
-```JavaScript
+```javascript
 import SDK from "@rpch/sdk";
 import { Chain, PublicClient, Transport, createClient, custom, publicActions } from "viem";
 import { WagmiConfig, createConfig, mainnet } from "wagmi";
@@ -73,7 +73,7 @@ import { WagmiConfig, createConfig, mainnet } from "wagmi";
 
 Initialize the RPCh SDK with the client secret, you can get a client secret from your dashboard at [degen.rpch.net](https://degen.rpch.net/):
 
-```JavaScript
+```javascript
 const sdk = new SDK(CLIENT_SECRET);
 ```
 
@@ -81,7 +81,7 @@ const sdk = new SDK(CLIENT_SECRET);
 
 Set up a PublicClient with a custom transport method to intercept and forward blockchain requests through the RPCh network:
 
-```JavaScript
+```javascript
 function publicRPChClient(): PublicClient<Transport, Chain> {
   return createClient({
     chain: mainnet,
@@ -120,7 +120,7 @@ The custom transport method does the following:
 
 Create a Wagmi configuration that uses the PublicClient from Viem:
 
-```JavaScript
+```javascript
 const config = createConfig({
   autoConnect: true,
   publicClient: publicRPChClient(),
@@ -136,7 +136,7 @@ This configuration includes:
 
 Define the App component which wraps the Profile component with WagmiConfig:
 
-```JavaScript
+```javascript
 export default function App() {
   return (
     <WagmiConfig config={config}>

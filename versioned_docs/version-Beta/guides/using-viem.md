@@ -12,7 +12,7 @@ This example showcases how to integrate the RPCh SDK with the [viem](https://git
 
 Find the complete example code on our GitHub [here](https://github.com/Rpc-h/RPCh/blob/main/examples/viem/src/index.ts).
 
-```TypeScript
+```javascript
 import SDK from '@rpch/sdk';
 import dotenv from 'dotenv';
 import { PublicClient, createClient, custom, publicActions } from 'viem';
@@ -47,7 +47,7 @@ export default publicRPChClient;
 
 The integration begins by importing the necessary modules:
 
-```JavaScript
+```javascript
 import SDK from '@rpch/sdk';
 import dotenv from 'dotenv';
 import { PublicClient, createClient, custom, publicActions } from 'viem';
@@ -58,7 +58,7 @@ import { mainnet } from 'viem/chains';
 
 Load the `.env` file to use the `CLIENT_SECRET`:
 
-```JavaScript
+```javascript
 dotenv.config();
 ```
 
@@ -66,7 +66,7 @@ dotenv.config();
 
 Create a custom `PublicClinet` using the viem library:
 
-```JavaScript
+```javascript
 function publicRPChClient(): PublicClient {
     return createClient({
         chain: mainnet,
@@ -92,7 +92,7 @@ Within this function:
 
 The example usage of publicRPChClient demonstrates a simple request to fetch the latest block:
 
-```JavaScript
+```javascript
 publicRPChClient()
     .getBlock()
     .then((res) => console.log(res));
@@ -105,7 +105,7 @@ publicRPChClient()
 
 Finally, publicRPChClient is exported for use throughout the application:
 
-```JavaScript
+```javascript
 export default publicRPChClient;
 ```
 
