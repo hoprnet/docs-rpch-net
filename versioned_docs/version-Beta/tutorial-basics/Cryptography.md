@@ -57,8 +57,8 @@ The protocol aims to achieve at least 128-bit security, meaning that breaking th
 
 Here’s the list of the general cryptographic primitives used in the protocol:
 
-* ENC<sub>K</sub>(IV,M) = (C,T) denotes authenticated encryption of a plaintext message M, using a secret key K and a unique initialization vector IV. The resulting product is a ciphertext C and an authentication tag T. The additional authenticated data (AAD) that such an encryption scheme might support is omitted for this protocol.
-* DEC<sub>K</sub>(IV,C,T) = (M, {0,1})  denotes decryption and verification of a given message M, authentication tag T, initialization vector IV, and a secret key K. The resulting product is the alleged plaintext message M and an indicator whether the obtained message is authentic (1) or not (0).
+* ENC<sub>K</sub>(IV,M,AAD) = (C,T) denotes authenticated encryption of a plaintext message M, using a secret key K, a unique initialization vector IV and additional authenticated data (AAD). The resulting product is a ciphertext C and an authentication tag T.
+* DEC<sub>K</sub>(IV,C,AAD,T) = (M, {0,1}) denotes decryption and verification of a given message C, additional authenticated data AAD, authentication tag T, initialization vector IV, and a secret key K. The resulting product is the alleged plaintext message M and an indicator whether the obtained message is authentic (1) or not (0).
 * ECDH(s,P) = Q  denotes the Elliptic Curve Diffe-Hellman step, i.e. multiplication of a point P on a common elliptic curve by a secret scalar s, resulting in a new point Q = sP .
 * KDF<sub>i</sub>(Q,t,n) = s denotes a key derivation function with index i, applied to an elliptic curve point Q and additional tag t. The result is a byte string s of length n bytes.
 * GEN() = (s,P) generates a random valid keypair on an elliptic curve (compatible with ECDH) using a cryptographically secure random number generator. The result is a private key s and a corresponding public key P.
@@ -66,7 +66,7 @@ Here’s the list of the general cryptographic primitives used in the protocol:
 
 To meet the minimal security requirements mentioned above, we will assume a secure elliptic curve over a prime field with the size of the prime ~ 2<sup>256</sup> . We will also assume a symmetric cipher that accepts at least a 128-bit secret key and an IV of at least 12 bytes. We assume the symmetric cipher does not require padding of the input message or is taken care of automatically in its implementation (in case the instantiation is a block cipher). 
 
-The current version byte is denoted as Ver (|Ver| = 1), and its value is 0x11. The second nibble of the byte denotes the ciphersuite version, and the first nibble denotes the protocol version. If a different instance of this protocol uses a different combination of cryptographic primitives, it must use a different value of the second nibble, e.g. 0x12. Protocol modifications which are not backwards compatible must use a different first nibble, e.g. 0x21.
+The current version byte is denoted as Ver (|Ver| = 1), and its value is 0x21. The second nibble of the byte denotes the ciphersuite version, and the first nibble denotes the protocol version. If a different instance of this protocol uses a different combination of cryptographic primitives, it must use a different value of the second nibble, e.g. 0x22. Protocol modifications which are not backwards compatible must use a different first nibble, e.g. 0x31.
 
 For concrete examples of instantiations of the above cryptographic primitives so that the security requirements are fulfilled, see the instantiation section below.
 
@@ -109,10 +109,10 @@ IV1 = KDF2(Spre , Ver || IDexit || "req", |IV| - |C|)
 IVM = IV1 || Creq
 ```
 
-* Then it encrypts the message M to produce a ciphertext C and authentication tag T.
+* Then it encrypts the message M to produce a ciphertext C and authentication tag T. The request identifier Z  is used as AAD.
 
 ```
-(R, T) = ENCKM(IVM , M)
+(R, T) = ENCKM(IVM , M, Z)
 ```
 
 * Finally, the RPCh client formats the final request message Req which is then delivered to the HOPR Entry node. 
@@ -123,13 +123,14 @@ Req = Ver || W || Creq || R || T
 ```
 
 * RPCh client sends Req using the HOPR Entry node. Via the HOPR protocol, it gets delivered to the destination RPCh Exit node.
+* At the upper layer, the request identifier Z is also delivered to the RPCh exit node.
 * Note that with the assumed security parameters of the used primitives, the size of the request Req is 58 (|Ver| = 1, |W| = 33, |C<sub>req</sub>| = 8, |T| = 16) plus the size of the ciphertext R. If the underlying symmetric cipher does not require input message padding, the size of Req will be exactly equal 58 + |M|.
 
 ### Request Reception Stage
 
 The following stage is executed on the RPCh Exit node after delivery of the RPCh message Req. Since the HOPR protocol at its current state includes the Peer ID of the HOPR Entry node (sender) into the message (missing return path implementation), we assume the RPCh Exit node knows the Peer ID ID<sub>entry</sub>.
 
-* The RPCh Exit node N (with identifier ID<sub>exit</sub>) decomposes Req into the individual parameters (knowing their size is fixed). If Ver has a value it supports, it decompresses the EC point Q<sub>M</sub>. Then it combines its own private key s<sub>N</sub> with the decompressed point to recover the secret per-message pre-key S<sub>pre</sub>. If the RPCh Exit node does not support the version given by Ver, the sender is notified via the upper protocol layer.
+* The RPCh Exit node N (with identifier ID<sub>exit</sub>) decomposes Req into the individual parameters (knowing their size is fixed). It is assumed that the RPCh Exit node also receives the request identifier Z at the upper protocol. If Ver has a value it supports, it decompresses the EC point Q<sub>M</sub>. Then it combines its own private key s<sub>N</sub> with the decompressed point to recover the secret per-message pre-key S<sub>pre</sub>. If the RPCh Exit node does not support the version given by Ver, the sender is notified via the upper protocol layer.
 
 ```
 (Ver, W, C, R, T) = Req
@@ -145,10 +146,10 @@ IV1 = KDF2(Spre , Ver || IDexit || "req", |IV| - |C|)
 IVM = IV1 || Creq
 ```
 
-* Next, it decrypts the ciphertext, obtains the validation result V, and recovers M.
+* Next, it decrypts the ciphertext, obtains the validation result V, and recovers M. This also assumes the RPCh Exit node has received the request identifier Z.
 
 ```
-(M, V) = DECKM(IVM, R, T)
+(M, V) = DECKM(IVM, R, Z, T)
 ```
 
 * The RPCh Exit Node discards the message M (checks done exactly in the following order) if :
@@ -171,10 +172,10 @@ IV2 = KDF4(Spre , Ver || IDentry || "resp", |IV|-|C|)
 IVU = IV2 || Cresp
 ```
 
-* Then it proceeds with encrypting the response message U to produce a ciphertext R<sub>2</sub> and authentication tag T<sub>2</sub>.
+* Then it proceeds with encrypting the response message U to produce a ciphertext R<sub>2</sub> and authentication tag T<sub>2</sub>. The request identifier Z is used again as AAD.
 
 ```
-(R2, T2) = ENCKU(IV2 , U)
+(R2, T2) = ENCKU(IVU , U, Z)
 ```
 
 * Lastly, the RPCh client formats the final request message Resp which is then delivered to the HOPR Entry node and subsequently to the RPCh client. 
@@ -198,10 +199,10 @@ IV2 = KDF4(Spre , Ver || IDentry || "resp", |IV|-|C|)
 IVU = IV2 || Cresp
 ```
 
-* Next, it decrypts the ciphertext, obtains the validation result V2, and recovers U.
+* Next, it decrypts the ciphertext, obtains the validation result V2, and recovers U. This again assumes the client knows the corresponding request identifier Z.
 
 ```
-(U, V2) = DECKU(IVU, R2, T2)
+(U, V2) = DECKU(IVU, R2, Z, T2)
 ```
 
 * The RPCh client discards the message U (checks done exactly in the following order) if :
@@ -258,7 +259,7 @@ The case is mitigated more easily when timestamps are being used as counters. In
 
 Here is a concrete and recommended instantiation of the cryptographic primitives:
 
-* Ver = 0x11
+* Ver = 0x21
 * ENC, DEC is Chacha20 with Poly1305. It accepts the key size of 256 bits, and the IV size is 96 bits. It preserves the size of the plaintext/ciphertext.
 * ECDH is currently based on secp256k1 due to easier compatibility with the Smart Contracts. However, we would ideally want to use X25519, a concrete Elliptic curve Diffie-Hellman instantiation over Curve25519 with the prime field of size 2<sup>255</sup> - 19. 
 * COMP and GEN are based on Curve25519.
