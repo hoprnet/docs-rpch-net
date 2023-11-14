@@ -24,7 +24,9 @@ We currently have example integrations for the following libraries:
 - **viem:** view a breakbown of the example integration [here.](./using-viem.md)
 - **wagmi:** view a breakbown of the example integration [here.](./using-wagmi.md)
 
-If your project is using a different library you can still use these examples as integration or alternatively, view our [vanilla SDK example](./using-the-sdk.md) for a more barebones approach. 
+**Note:** Other example integrations from libraries such as web3.js 
+
+If your project is using a different library, you can still use these examples for help developing custom integrations or alternatively, view our [vanilla SDK example](./using-the-sdk.md) for a more barebones approach. 
 
 ### Using the RPCh SDK
 
