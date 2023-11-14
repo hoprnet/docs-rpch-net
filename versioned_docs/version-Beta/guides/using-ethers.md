@@ -174,6 +174,6 @@ Similar to this example, you can now use the RPCh SDK for any requests you would
 
 To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/ethers/src/index.ts): 
 
-(**1**) Edit the `.env` file to include your Client secret which you can obtain from the dashboard to [degen.rpch.net](https://degen.rpch.net/)
+(**1**) Edit the `.env` file to include your `Client Secret` which you can obtain from the dashboard at [degen.rpch.net](https://degen.rpch.net/)
 
 (**2**) Run `yarn && yarn dev`
