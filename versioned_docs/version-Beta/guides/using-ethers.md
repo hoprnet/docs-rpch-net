@@ -170,7 +170,7 @@ example()
     .catch((err) => console.error(err));
 ```
 
-Similar to this example, you can now use the RPCh SDK for any requests you would otherwise make directly to your RPC provider. 
+Similar to this example, you can now use the RPCh SDK for any requests you would otherwise make directly to your RPC provider. Once you have integrated RPCh, as done above, you can continue using the methods from the ethers library such as `.send()` or `.getBalance` just as you normally would throughout your codebase, and these requests will automatically be routed through RPCh. 
 
 ## Using the Example
 
