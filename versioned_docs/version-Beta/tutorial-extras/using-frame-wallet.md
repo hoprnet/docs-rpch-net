@@ -21,7 +21,7 @@ Please find the distribution here for testing as not hosted on GH right now: htt
 
 (**2**) You should now have an application icon you can click on to install Frame. This will look similar to the below image on macOS. 
 
-![Application Icon](/img/core/Frame-application-icon.png)
+![Application Icon](/img/Frame-application-icon.png)
 
 ## Step 2: Import Wallet to Frame
 
@@ -29,13 +29,13 @@ Frame does not allow you to create wallets, only import existing ones. The follo
 
 (**1**) On MetaMask, navigate to `Settings`.
 
-![MetaMask Settings](/img/core/MetaMask-settings.png)
+![MetaMask Settings](/img/MetaMask-settings.png)
 
 (**2**) Select `Security & privacy`
 
 (**3**) Press the `Reveal Secret Recovery Phrase` Button and complete the security questions.
 
-![Reveal SRP](/img/core/Reveal-secret-recover-phrase.png)
+![Reveal SRP](/img/Reveal-secret-recover-phrase.png)
 
 (**4**) With your Secret Recovery Phrase copied, open the Frame wallet application.
 
@@ -53,7 +53,7 @@ To use Frame on your browser, you need to use the Frame Companion extension.
 
 (**1**) Download the Frame Companion extension to your browser, here is the [link for Chrome](https://chromewebstore.google.com/detail/frame-companion/ldcoohedfbjoobcadoglnnmmfbdlmmhf)
 
-![Add Frame companion](/img/core/add-frame-companion.png)
+![Add Frame companion](/img/add-frame-companion.png)
 
 ## Using Frame With Dapps
 
@@ -65,7 +65,7 @@ To Use Frame with Dapps, you need to make sure:
 
 (**1**) Disable any clashing wallets, such as MetaMask, in the extensions section of your browser.
 
-![Disable Metamask](/img/core/Metamask-disabled.png)
+![Disable Metamask](/img/Metamask-disabled.png)
 
 (**2**) Make sure you have your Frame Wallet application open with at least one wallet imported.
 
@@ -73,6 +73,6 @@ To Use Frame with Dapps, you need to make sure:
 
 **Note:** You will have to do this every time you use a new Dapp.
 
-![Appear As MM](/img/core/appear-as-MM-2.png)
+![Appear As MM](/img/appear-as-MM-2.png)
 
 (**4**) When connecting your wallet to a Dapp, select the MetaMask option, and your imported Frame wallet should connect by default.
