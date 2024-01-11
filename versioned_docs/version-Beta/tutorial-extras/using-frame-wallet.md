@@ -1,6 +1,5 @@
 ---
-id: hidden-page2
-title: Additional Information
+title: Using Frame Wallet
 ---
 
 # How to Use The RPCh Integrated Frame Wallet
