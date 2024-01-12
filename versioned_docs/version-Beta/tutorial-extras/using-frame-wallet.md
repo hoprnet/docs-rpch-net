@@ -16,8 +16,6 @@ This is a guide on how to use the RPCh-integrated version of the Frame Wallet. T
 
 **Note:** If using macOS, extract the folder somewhere convenient.
 
-Please find the distribution here for testing as not hosted on GH right now: https://drive.google.com/drive/folders/19ZYsMVuuDRsIBw0OqN9H9wo9uoVGeUuK
-
 (**2**) You should now have an application icon you can click on to install Frame. This will look similar to the below image on macOS. 
 
 ![Application Icon](/img/Frame-application-icon.png)
@@ -75,3 +73,29 @@ To Use Frame with Dapps, you need to make sure:
 ![Appear As MM](/img/appear-as-MM-2.png)
 
 (**4**) When connecting your wallet to a Dapp, select the MetaMask option, and your imported Frame wallet should connect by default.
+
+## How To Know My Wallet Is Private
+
+To test that the RPCh-integrated wallet is actually protecting your metadata, you can use [DERP](https://derp.hoprnet.org/). DERP is an RPC endpoint that reads the RPC calls being made to it just as your RPC provider or any other third party might, and if the IP address of the requests matches your browser IP address, it will make these calls visible on your browser.
+
+This is a great tool to highlight exactly the data your wallet is leaking about you. 
+
+![DERP](/img/DERP.png)
+
+But suppose you connect to DERP using Frame with RPCh. In that case, the DERP page will appear blank, indicating your IP address doesn't match any of the IP addresses associated with your wallet's RPC calls.
+
+![DERP Blank](/img/DERP-blank.png)
+
+**Note:** If you use DERP with your normal wallet to see what data you are leaking, it will not store any of the data collected. You can see how DERP maintains your privacy [here](https://twitter.com/hoprnet/status/1586009970008530945).
+
+### How To Use DERP With Frame
+
+(**1**) In the Frame menu, select `Chains`. Then, in the pop-up screen, press the `Add New Chain` button at the bottom.
+
+(**2**) Here, fill out the Chain information of the chain you want to use while making sure to use the DERP RPC endpoint for your `PRIMARY RPC`.
+
+**Note:** You can find the correct chain information on the [DERP website](https://derp.hoprnet.org/).
+
+![DERP Chains](/img/DERP-chain-selection.png)
+
+(**3**) Visit [DERP](https://derp.hoprnet.org/) to see if your Frame wallet is leaking any information while you are using it.
