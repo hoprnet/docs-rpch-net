@@ -74,7 +74,7 @@ To Use Frame with Dapps, you need to make sure:
 
 (**4**) When connecting your wallet to a Dapp, select the MetaMask option, and your imported Frame wallet should connect by default.
 
-## How To Know My Metadata is Secure
+## How To Know My Wallet Is Private
 
 To test that the RPCh-integrated wallet is actually protecting your metadata, you can use [DERP](https://derp.hoprnet.org/). DERP is an RPC endpoint that reads the RPC calls being made to it just as your RPC provider or any other third party might, and if the IP address of the requests matches your browser IP address, it will make these calls visible on your browser.
 
