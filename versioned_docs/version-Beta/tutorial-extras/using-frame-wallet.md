@@ -16,8 +16,6 @@ This is a guide on how to use the RPCh-integrated version of the Frame Wallet. T
 
 **Note:** If using macOS, extract the folder somewhere convenient.
 
-Please find the distribution here for testing as not hosted on GH right now: https://drive.google.com/drive/folders/19ZYsMVuuDRsIBw0OqN9H9wo9uoVGeUuK
-
 (**2**) You should now have an application icon you can click on to install Frame. This will look similar to the below image on macOS. 
 
 ![Application Icon](/img/Frame-application-icon.png)
