@@ -12,7 +12,7 @@ This is a guide on how to use the RPCh-integrated version of the Frame Wallet. T
 
 * [MacOS](./Frame-0.6.8-rpch-sdk-1.10.0-macOS-361200df45586c5b8ffbb711951d33b7.zip)
 * [Windows](./Frame-0.6.8-rpch-sdk-1.10.0-Win64.exe)
-* [Linux](./Frame-0.6.8-rpch-sdk-1.10.0-Win64.exe)
+* [Linux](./Frame-0.6.8-rpch-sdk-1.10.0-Linux.AppImage)
 
 **Note:** If using macOS, extract the folder somewhere convenient.
 
