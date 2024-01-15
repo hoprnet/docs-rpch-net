@@ -99,3 +99,9 @@ But suppose you connect to DERP using Frame with RPCh. In that case, the DERP pa
 ![DERP Chains](/img/DERP-chain-selection.png)
 
 (**3**) Visit [DERP](https://derp.hoprnet.org/) to see if your Frame wallet is leaking any information while you are using it.
+
+## Turn Off RPCh
+
+To toggle RPCh on or off you can go to the settings and scroll down to the last option. Here toggle RPCh under the setting `Protect Your Privacy`. This referes to RPCh.
+
+![RPCh Toggle](/img/RPCh-toggle-2.png)
