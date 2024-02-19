@@ -6,7 +6,11 @@ title: Using RPCh
 
 Once you have [added RPCh to your wallet](./add-RPCh-to-any-EVM-wallet.md) for your desired EVM chain, you can use RPCh just by selecting it as your chain/RPC while using your wallet. It is as easy as running RPCh and changing your chain. Then, you can use your wallet just as you normally would, but with the added relief of knowing your activity is now private.
 
-// INSERT VIDEO
+<p align="center" style={{"marginRight": "100px", "marginTop": "20px", "marginBottom": "20px"}}>
+    <video width="960" frameborder="0" allow="autoplay; fullscreen" allowfullscreen controls >
+    <source src="/video/Uniswap_tx_RPCh.mp4" type="video/mp4"/>
+    </video>
+</p>
 
 ## Troubleshooting RPCh
 
@@ -14,7 +18,11 @@ If your wallet is buffering or transactions are not going through, this is an in
 
 The video below shows how to check if RPCh is failing by viewing transactions made by the MetaMask extension on Chrome.
 
-// INSERT VIDEO
+<p align="center" style={{"marginRight": "100px", "marginTop": "20px", "marginBottom": "20px"}}>
+    <video width="960" frameborder="0" allow="autoplay; fullscreen" allowfullscreen controls >
+    <source src="/video/Troubleshooting_RPCh.mp4" type="video/mp4"/>
+    </video>
+</p>
 
 ## How Do I Run RPCh Continuously?
 
