@@ -51,17 +51,19 @@ Your terminal logs show metrics for RPCh, along with any requests being made by 
 
 You can check if RPCh is functioning as it should by inspecting your wallet in your browser or checking your logs.
 
-### Viewing Requests Through Your Browser
+### Inspect Browser Wallet
 
-The following instructions are for MetaMask on Chrome, but a similar set of instructions can be followed for any wallet/browser. 
+Once you have added the new network to your wallet, you can test that it is actually working by inspecting your browser wallet. The instructions below show how to do this for Chrome.
 
-(**1**) Go to `Manage Extensions` on your browser.
+(**1**) Go to your browser's extensions page. For chrome you can type the following URL into your search bar: `chrome://extensions/`
 
-(**2**) Enable developer mode using the toggle on the top right.
+(**2**) Locate your browser wallet and click on the hyperlinked `service worker`/`background page`/`background.html` text at the bottom of your extension. 
 
-(**3**) Press the  `background.html` hyperlink on the MetaMask extension.
+![Inspect](/img/Extensions_chrome_inspect.png)
 
-(**4**) On the new pop-up window, switch to the `Network` tab, and you should be able to see a list of requests sent by your MetaMask wallet in real time. Here, you can check that none of the requests are failing. 
+(**3**) With the newly exposed console window open, connect to an exchange such as [SushiSwap](https://www.sushi.com/swap) and see exactly what your wallet is doing, including its interactions with RPCh/HOPR nodes.
+
+![Test](/img/Test.png)
 
 ### Checking Terminal Logs
 
