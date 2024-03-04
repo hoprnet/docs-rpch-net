@@ -50,50 +50,6 @@ Depending on your distribution, please follow the official guidelines to install
 
 That's all! As long as your command is running, you can use the RPCh network to use RPCh whenever you want.
 
-**Bonus Tip:** To run this Docker command in the background, it may be helpful to use [tmux](./getting-started-with-docker.md#run-rpch-continuously). This will let you run the command in a background session and avoid having to re-run the command every time you turn on your device. 
-
-Now you can add RPCh to your wallet by following the instructions [here](/versioned_docs/version-Beta/tutorial-extras/add-RPCh-to-any-EVM-wallet.md#add-rpch-to-your-evm-wallet-on-any-evm-chain).
-
-### Run RPCh Continuously 
-
-To avoid having to re-run the Docker command every time you want to use RPCh or close your terminal session, you can use tmux.
-
-You can use these basic commands to set up a separate session which will run continuously in the background:
-
-(**1**) First, install Tmux.
-
-```bash
-sudo apt install tmux
-```
-
-(**2**) Enter `tmux` to open a new session.
-
-```bash
-tmux
-```
-
-That's it! You now have a new session running in the background even when you close your terminal. Use this new session to run your Docker command. To navigate between sessions, you should familiarise yourself with other [Tmux commands](https://linuxize.com/post/getting-started-with-tmux/). The three main ones you will need are:
-
-```bash
-tmux ls
-```
-
-To output a list of all your open sessions.
-
-```bash
-tmux attach-session -t <session ID or name>
-```
-
-To navigate to a particular session, the first session you have created will have an id of `0`. Use the list command to view all your current sessions.
-
-```bash
-ctrl+b d
-```
-
-To exit your current session without closing it. To be clear, you press ctrl and b simultaneously, then press d after letting them go.
-
-Please make sure you are in a newly opened session and haven't exited it before continuing.
-
 ## (Optional) Choose Custom MEV Provider
 
 By default, RPCh comes with MEV protection enabled via [PropellerHeads](https://docs.propellerheads.xyz/propellerheads-docs/introduction/overview). This allows you to earn revenue kickbacks based on the amount of revenue generated through propellerheads' MEV [protection solutions](https://docs.propellerheads.xyz/propellerheads-docs/introduction/overview#best-prices-and-full-mev-protection), but if you don't want to use PropellerHeads, you can choose your own MEV protection service by editing the Docker command you acquire through the dashboard.
