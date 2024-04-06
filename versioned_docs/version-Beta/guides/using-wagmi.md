@@ -4,8 +4,6 @@ sidebar_position: 4
 
 # RPCh Wagmi Example Integration
 
-## Description
-
 The following documentation provides an integration example of the RPCh SDK with the Wagmi library. Wagmi is a set of React Hooks for Ethereum, which allows for a more straightforward way to interface with Ethereum blockchains in React applications.
 
 ## Example Integration
@@ -150,7 +148,7 @@ The WagmiConfig component provides the Wagmi context to the Profile component, e
 
 ## Using the Example
 
-To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/wagmi/src/App.tsx): 
+To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/wagmi/src/App.tsx):
 
 (1) Add your `CLIENT_SECRET` in the `config.ts` file.
 

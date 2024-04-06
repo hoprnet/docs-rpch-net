@@ -4,8 +4,6 @@ sidebar_position: 2
 
 # RPCh Ethers Example Integration
 
-## Description
-
 This is an example of integrating the RPCh SDK into a project which uses the ethers library. In this example an RPCh ethers adapter is created as an extension of the original `JsonRPCProvider`, which allows clients to use drop-in and replace so that they can send their RPC requests through the RPCh network.
 
 ## Example Integration
@@ -100,7 +98,7 @@ Define the RPChProvider class extending the JsonRpcProvider class from the ether
 ```javascript
 export class RPChProvider extends JsonRpcProvider {
     constructor(
-      public readonly url: string, 
+      public readonly url: string,
       public readonly sdk: SDK
     ) {
       super(url);
@@ -170,11 +168,11 @@ example()
     .catch((err) => console.error(err));
 ```
 
-Similar to this example, you can now use the RPCh SDK for any requests you would otherwise make directly to your RPC provider. Once you have integrated RPCh, as done above, you can continue using the methods from the ethers library such as `.send()` or `.getBalance` just as you normally would throughout your codebase, and these requests will automatically be routed through RPCh. 
+Similar to this example, you can now use the RPCh SDK for any requests you would otherwise make directly to your RPC provider. Once you have integrated RPCh, as done above, you can continue using the methods from the ethers library such as `.send()` or `.getBalance` just as you normally would throughout your codebase, and these requests will automatically be routed through RPCh.
 
 ## Using the Example
 
-To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/ethers/src/index.ts): 
+To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/ethers/src/index.ts):
 
 (**1**) Edit the `.env` file to include your `Client Secret` which you can obtain from the dashboard at [degen.rpch.net](https://degen.rpch.net/)
 
