@@ -4,8 +4,6 @@ sidebar_position: 6
 
 # RPCh json-rpc-2.0 Example Integration
 
-## Description
-
 The following documentation provides an integration example of the RPCh SDK with the json-rpc-2.0 library, which is lets your client and server talk over function calls under JSON-RPC 2.0 spec.
 
 ## Preparation

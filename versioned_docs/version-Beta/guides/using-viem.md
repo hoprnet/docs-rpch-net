@@ -4,8 +4,6 @@ sidebar_position: 3
 
 # RPCh Viem Example Integration
 
-## Description
-
 This example showcases how to integrate the RPCh SDK with the [viem](https://github.com/wagmi-dev/viem) library to create a custom PublicClient. The integration allows for utilizing the Viem library to send requests through the RPCh network instead of directly to an Ethereum RPC provider.
 
 ## Example Integration
@@ -111,7 +109,7 @@ export default publicRPChClient;
 
 ## Using the Example
 
-To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/viem/src/index.ts): 
+To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/viem/src/index.ts):
 
 (**1**) Edit the `.env` file to include your `Client Secret` which you can obtain from the dashboard at [degen.rpch.net](https://degen.rpch.net/)
 

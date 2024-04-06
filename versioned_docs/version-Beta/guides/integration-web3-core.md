@@ -4,8 +4,6 @@ sidebar_position: 5
 
 # RPCh Web3 Eth/Core Example Integration
 
-## Description
-
 The following documentation provides an integration example of the RPCh SDK with the Web3 Eth/Core library. web3.js - Eth is a sub-package of web3.js, and contains modules to interact with the Ethereum blockchain and smart contracts.
 
 ## Preparation
