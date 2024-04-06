@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # RPCh Web3 Eth/Core Example Integration
@@ -238,33 +238,19 @@ export class RPChProvider implements AbstractProvider {
 ```
 
 
-### Example Usage
+## Example Usage
 
 ```javascript
+import Web3Eth from "web3-eth";
+import { getSupportedRpchProvider } from "./rpch-provider";
 
-import { numberToHex, toBN } from "web3-utils";
-import { ERC20TokenInfo } from "../types";
-import erc20 from "./abi/erc20";
-import { getSupportedRpchProvider } from "@/libs/rpch-provider";
+const web3 = new Web3Eth(getSupportedRpchProvider(this.node));
 
-class Web3API implements ProviderAPIInterface {
-  node: string;
-  web3: Web3Eth;
-
-  constructor(node: string) {
-    this.node = node;
-    this.web3 = new Web3Eth(getSupportedRpchProvider(this.node));
-  }
-
-  public get api() {
-    return this;
-  }
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  async init(): Promise<void> {}
-  getBalance(address: string): Promise<string> {
-    return this.web3.getBalance(address);
-  }
+function getBalance(address) {
+  return web3.getBalance(address);
 }
-export default Web3API;
+
+getBalance('0x00000000219ab540356cbb839cbe05303d7705fa');
 
 ```
+

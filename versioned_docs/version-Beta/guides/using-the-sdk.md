@@ -1,12 +1,12 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 # RPCh Vanilla JS SDK Example Integration
 
 ## Description
 
-This guide provides instructions on how to integrate and use the RPCh SDK in a Node.js environment without any additional blockchain libraries such as ethers.js, web3.js, or the wagmi library. 
+This guide provides instructions on how to integrate and use the RPCh SDK in a Node.js environment without any additional blockchain libraries such as ethers.js, web3.js, or the wagmi library.
 
 ## Example Integration
 
@@ -100,7 +100,7 @@ Within this function:
 
 ## Using the Example
 
-To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/vanilla-sdk/src/index.ts): 
+To use this particular [example](https://github.com/Rpc-h/RPCh/blob/main/examples/vanilla-sdk/src/index.ts):
 
 (**1**) Edit the `.env` file to include your Client secret which you can obtain from the dashboard to [degen.rpch.net](https://degen.rpch.net/)
 
