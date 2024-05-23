@@ -4,10 +4,7 @@ sidebar_position: 7
 
 # RPCh Example Integration - React & Viem dApp
 
-The following documentation provides an integration example of the RPCh SDK into a ReactJS dApp which uses the viem library. This integration will let your client and server talk over function calls over RPCh Infra, butu without any changes to web3 functions.
-
-
-
+The following documentation provides an integration example of the RPCh SDK into a ReactJS dApp which uses the viem library. This integration will let your client and server talk over function calls over RPCh Infra, but without any changes to web3 functions.
 
 ## Preparation
 
@@ -20,9 +17,6 @@ or
 ```bash
 npm i @rpch/sdk 
 ```
-
-
-
 
 ## Example Integration
 
