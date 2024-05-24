@@ -9,18 +9,18 @@ The following documentation provides an integration example of the RPCh SDK into
 ## Preparation
 
 ```bash
-yarn add @rpch/sdk 
+yarn add @rpch/sdk
 ```
 
 or
 
 ```bash
-npm i @rpch/sdk 
+npm i @rpch/sdk
 ```
 
 ## Example Integration
 
-![Example Integration](/img/RP_dApp_React+Viem_integration.png)
+[![Example Integration](/img/RP_dApp_React+Viem_integration.png)](https://github.com/hoprnet/rpch-getlogs-explorer/pull/4)
 
 ## Materials of the exapmple GetLogs dApp
 Repo of dApp: https://github.com/hoprnet/rpch-getlogs-explorer
